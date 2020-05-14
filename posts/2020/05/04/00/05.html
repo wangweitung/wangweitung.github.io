@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ubuntu安装hexo | 记录我自己</title><meta name="description" content="ubuntu安装hexo一、安装 Node.js和npm1234sudo apt-get updatesudo apt-get upgradesudo apt-get install nodejssudo apt-get install npm  &amp;emsp;&amp;emsp;查看nodejs和npm版本号 12nodejs -vnpm -v  &amp;emsp;&amp;emsp;如果不能安装提示： 1234567"><meta name="keywords" content="hexo"><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="dns-prefetch" href="https://fonts.googleapis.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="dns-prefetch" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ubuntu安装hexo"><meta name="twitter:description" content="ubuntu安装hexo一、安装 Node.js和npm1234sudo apt-get updatesudo apt-get upgradesudo apt-get install nodejssudo apt-get install npm  &amp;emsp;&amp;emsp;查看nodejs和npm版本号 12nodejs -vnpm -v  &amp;emsp;&amp;emsp;如果不能安装提示： 1234567"><meta name="twitter:image" content="http://wangweitung.tk:3800/uploads/big/4fa9512bb4fe04d8fdff232b2772ee4c.png"><meta property="og:type" content="article"><meta property="og:title" content="ubuntu安装hexo"><meta property="og:url" content="https://wangweitung.github.io/posts/2020/05/04/00/05.html"><meta property="og:site_name" content="记录我自己"><meta property="og:description" content="ubuntu安装hexo一、安装 Node.js和npm1234sudo apt-get updatesudo apt-get upgradesudo apt-get install nodejssudo apt-get install npm  &amp;emsp;&amp;emsp;查看nodejs和npm版本号 12nodejs -vnpm -v  &amp;emsp;&amp;emsp;如果不能安装提示： 1234567"><meta property="og:image" content="http://wangweitung.tk:3800/uploads/big/4fa9512bb4fe04d8fdff232b2772ee4c.png"><meta property="article:published_time" content="2020-05-03T16:05:33.000Z"><meta property="article:modified_time" content="2020-05-13T00:56:24.132Z"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '2'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://wangweitung.github.io/posts/2020/05/04/00/05.html"><link rel="prev" title="Wordpress问题解决" href="https://wangweitung.github.io/posts/2020/05/04/00/05.html"><link rel="next" title="Hello World" href="https://wangweitung.github.io/posts/2020/05/03/22/12.html"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"SOFJLCX0IW","apiKey":"74998d40bfca62cdc3aef726d0b59cdc","indexName":"mygithubsearch","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: false,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">41</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">25</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">29</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fa fa-picture-o"></i><span> Pictures</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu安装hexo"><span class="toc-number">1.</span> <span class="toc-text">ubuntu安装hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、安装-Node-js和npm"><span class="toc-number">1.1.</span> <span class="toc-text">一、安装 Node.js和npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、安装及卸载-Hexo"><span class="toc-number">1.2.</span> <span class="toc-text">二、安装及卸载 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装hexo"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、卸载hexo"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、卸载hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、配置hexo及常用命令"><span class="toc-number">1.3.</span> <span class="toc-text">三、配置hexo及常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、站点信息设置"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、站点信息设置:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、hexo的命令"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、hexo的命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、部署到Github"><span class="toc-number">1.4.</span> <span class="toc-text">四、部署到Github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-配置本机全局git环境（如果已经配置过请忽略）"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.配置本机全局git环境（如果已经配置过请忽略）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成SSH秘钥"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.生成SSH秘钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、创建博客工程"><span class="toc-number">1.4.3.</span> <span class="toc-text">3、创建博客工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、将ssh秘钥添加到github中"><span class="toc-number">1.4.4.</span> <span class="toc-text">4、将ssh秘钥添加到github中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、配置Hexo，编译与部署"><span class="toc-number">1.5.</span> <span class="toc-text">五、配置Hexo，编译与部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、hexo-怎么删除文章？"><span class="toc-number">1.6.</span> <span class="toc-text">六、hexo 怎么删除文章？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、更换主题"><span class="toc-number">1.7.</span> <span class="toc-text">七、更换主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、使用hexo-admin"><span class="toc-number">1.8.</span> <span class="toc-text">八、使用hexo-admin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、原始方法："><span class="toc-number">1.8.1.</span> <span class="toc-text">1、原始方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Hexo-Admin插件管理"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. Hexo Admin插件管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、实用教学"><span class="toc-number">1.9.</span> <span class="toc-text">九、实用教学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、文章状态在-Hexo-资料夹中的架构"><span class="toc-number">1.10.</span> <span class="toc-text">十、文章状态在 Hexo 资料夹中的架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、问题解决"><span class="toc-number">1.11.</span> <span class="toc-text">十一、问题解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、安装新主题butterfly的问题"><span class="toc-number">1.12.</span> <span class="toc-text">十二、安装新主题butterfly的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、评论系统"><span class="toc-number">1.13.</span> <span class="toc-text">十二、评论系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、评论数据管理："><span class="toc-number">1.13.1.</span> <span class="toc-text">1、评论数据管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、关于攻击："><span class="toc-number">1.13.2.</span> <span class="toc-text">2、关于攻击：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三、配置搜索"><span class="toc-number">1.14.</span> <span class="toc-text">十三、配置搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十四、顶部图"><span class="toc-number">1.15.</span> <span class="toc-text">十四、顶部图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十五、设置二级分类"><span class="toc-number">1.16.</span> <span class="toc-text">十五、设置二级分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十六、更新文章目录、索引、及发布"><span class="toc-number">1.17.</span> <span class="toc-text">十六、更新文章目录、索引、及发布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、写文章命令"><span class="toc-number">1.17.1.</span> <span class="toc-text">1、写文章命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、发布命令"><span class="toc-number">1.17.2.</span> <span class="toc-text">2、发布命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十七、索引更新"><span class="toc-number">1.18.</span> <span class="toc-text">十七、索引更新</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(http://wangweitung.tk:3800/uploads/big/4fa9512bb4fe04d8fdff232b2772ee4c.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">记录我自己</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 清单</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/gallery/"><i class="fa-fw fa fa-picture-o"></i><span> Pictures</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">ubuntu安装hexo</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-05-04 00:05:33"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-05-04</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-05-13 08:56:24"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-05-13</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2/hexo/">hexo</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">4k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 17 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/posts/2020/05/04/00/05.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/posts/2020/05/04/00/05.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="ubuntu安装hexo"><a href="#ubuntu安装hexo" class="headerlink" title="ubuntu安装hexo"></a>ubuntu安装hexo</h1><h2 id="一、安装-Node-js和npm"><a href="#一、安装-Node-js和npm" class="headerlink" title="一、安装 Node.js和npm"></a>一、安装 Node.js和npm</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;查看nodejs和npm版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nodejs -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果不能安装提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">Some packages could not be installed. This may mean that you have</span><br><span class="line">requested an impossible situation or if you are using the unstable</span><br><span class="line">distribution that some required packages have not yet been created</span><br><span class="line">or been moved out of Incoming.</span><br><span class="line">The following information may help to resolve the situation:</span><br><span class="line"></span><br><span class="line">The following packages have unmet dependencies:</span><br><span class="line"> npm : Depends: node-gyp (&gt;&#x3D; 0.10.9) but it is not going to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;使用下面的命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install aptitude </span><br><span class="line">sudo aptitude install npm</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;查看nodejs和npm版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nodejs -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;遇见这个选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> Keep the following packages at their current version:</span><br><span class="line"></span><br><span class="line">1)     libssl-dev [Not Installed]                         </span><br><span class="line">2)     node-gyp [Not Installed]                           </span><br><span class="line">3)     nodejs-dev [Not Installed]                         </span><br><span class="line">4)     npm [Not Installed]     </span><br><span class="line"></span><br><span class="line">Accept this solution? [Y&#x2F;n&#x2F;q&#x2F;?] ?</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果选y，没什么用，先选?再选n就安装成功了，我也不知道为什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v </span><br><span class="line">3.5.2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、安装及卸载-Hexo"><a href="#二、安装及卸载-Hexo" class="headerlink" title="二、安装及卸载 Hexo"></a>二、安装及卸载 Hexo</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><p>&emsp;&emsp;创建博客所在目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;切换目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd  &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;全局安装 Hexo，需要最高权限，记得输入root密码。</p>
+<p>&emsp;&emsp;安装 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;初始化 Hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果报错执行代码,不报错忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;安装插件—可先不安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-category --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-deployer-heroku --save</span><br><span class="line">npm install hexo-deployer-rsync --save</span><br><span class="line">npm install hexo-deployer-openshift --save</span><br><span class="line">npm install hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-stylus --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;ubuntu放开端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ufw allow 4000</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;测试安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;浏览器输入 <a href="http://192.168.1.204:4000" target="_blank" rel="noopener">http://192.168.1.204:4000</a> 可以访问到首页。至此，安装hexo完成。</p>
+<h3 id="2、卸载hexo"><a href="#2、卸载hexo" class="headerlink" title="2、卸载hexo"></a>2、卸载hexo</h3><p>&emsp;&emsp;如何干净的卸载 HEXO？</p>
+<p>&emsp;&emsp;命令提示符中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;然后文件夹中的blog，手动删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web</span><br><span class="line">rm -rf .&#x2F;hexo</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;另外，进行重装之前，如果还是在原来位置，必须手动清理了才能迁移安装。</p>
+<h2 id="三、配置hexo及常用命令"><a href="#三、配置hexo及常用命令" class="headerlink" title="三、配置hexo及常用命令"></a>三、配置hexo及常用命令</h2><p>&emsp;&emsp;修改Hexo配置文件hexo/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi _config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;提示：key对应没有值的时候，冒号后面一定要有空格！否则会报错例如: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timezone:Asia&#x2F;Shanghai</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;加了空格则不会报错，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timezone: Asia&#x2F;Shanghai</span><br></pre></td></tr></table></figure>
+
+
+<p>&emsp;&emsp;下边列出了常用的配置信息：</p>
+<h3 id="1、站点信息设置"><a href="#1、站点信息设置" class="headerlink" title="1、站点信息设置:"></a>1、站点信息设置:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: ZTFDeveloper&#39;s Blog #站名</span><br><span class="line">subtitle:  #副标题</span><br><span class="line">description: 前进的开发者#站描述</span><br><span class="line">author:  ZTF#作者</span><br><span class="line">language: zh-CN #语言</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: 记录我自己</span><br><span class="line">subtitle: &#39;在这个世界，努力的生活&#39;</span><br><span class="line">description: &#39;Think further，Do harder！&#39;</span><br><span class="line">keywords:</span><br><span class="line">author: wangweitung</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone: &#39;Asia&#x2F;Shanghai&#39;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;想把博客部署到自己的服务器,并通过IP或域名访问需要配置url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: http:&#x2F;&#x2F;blog.prozin.xyz</span><br><span class="line">root: &#x2F;</span><br><span class="line">permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">url: https:&#x2F;&#x2F;wangweitung.github.io&#x2F;</span><br><span class="line">root: &#x2F;</span><br><span class="line">permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks</span><br><span class="line">  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;Deployment 这里设置了Git,mocorochio为你的github用户名:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:mocorochio&#x2F;[micorochio.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:wangweitung&#x2F;wangweitung.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、hexo的命令"><a href="#2、hexo的命令" class="headerlink" title="2、hexo的命令"></a>2、hexo的命令</h3><p>&emsp;&emsp;新建文章(会在 hexo/source/_post 下生成对应.md 文件)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n 文章名称</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;生成静态文件(位于 hexo/public 目录)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;启动 Hexo 预览</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;提交部署(需要相关配置)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;也可以手动在Typora里新建文件，但记得要把头文件复制在新的文件的头部，修改必要信息即可。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Move的用法</span><br><span class="line">date: 2020-05-04 17:01:34</span><br><span class="line">tags: Move</span><br><span class="line">cover: http:&#x2F;&#x2F;wangweitung.tk:3800&#x2F;uploads&#x2F;big&#x2F;7a54e07a5c22d630b2558b9cfaea3a8c.png</span><br><span class="line">categories: </span><br><span class="line">- Plant Simulation</span><br><span class="line">- SimTalk</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、部署到Github"><a href="#四、部署到Github" class="headerlink" title="四、部署到Github"></a>四、部署到Github</h2><h3 id="1-配置本机全局git环境（如果已经配置过请忽略）"><a href="#1-配置本机全局git环境（如果已经配置过请忽略）" class="headerlink" title="1.配置本机全局git环境（如果已经配置过请忽略）"></a>1.配置本机全局git环境（如果已经配置过请忽略）</h3><p>&emsp;&emsp;首先请使用邮箱注册github账号，否则会影响下面操作，记住你注册的邮箱。<br>&emsp;&emsp;另外，请在ubuntu上设置你的git。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;weitung.wang@gmail.com&quot;</span><br><span class="line">git config --global user.name &quot;wangweitung&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-生成SSH秘钥"><a href="#2-生成SSH秘钥" class="headerlink" title="2.生成SSH秘钥"></a>2.生成SSH秘钥</h3><p>&emsp;&emsp;先确定你的VPS 有没有生成过ssh的key，验证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果报错,执行下面代码,-C后面加你在github的用户名邮箱，这样公钥才会被github认可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C weitung.wang@gmail.com</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;查看 公钥内容 稍后加入Github 账户的 sshkey中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;你会看到一堆代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa ****A***AAAB3NzaC1yc2EAAAADAQABAAABAQDAawx6pe4JpwLvpapP230zO37BSVKbzrGpmIyR5Wc37NeL51qLxQUipEV1ZsiTZXMMARSmaXIG7xGa5X+4imQiUbFp28DIN4+zXO7g8xSpsS6NSAuPdcP8dQUafOocBA6Ei7&#x2F;ArALn+AGt0gRVHtx2v6dMABgTSOd6kTxN2gKActkQPkk35lBQZ7Tg98rDFjxRKD3R+ofBtseZxW4S4qCnbZD4ZbNrXGgpCkjOdfXX&#x2F;1&#x2F;pWQAwZmFof6csHCZ5OfIolKia7xVNYAF94U45wnxKRW6Tt&#x2F;1b5oInvHsRoALNuxZkY5wBGOTQ0&#x2F;JFnKS4bDClgiyVvJDfnmTMmqC9A7Lb weitung.wang@gmail.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、创建博客工程"><a href="#3、创建博客工程" class="headerlink" title="3、创建博客工程"></a>3、创建博客工程</h3><p>&emsp;&emsp;创建一个新项目，项目名称为 用户名.github.io ，比如我的Github用户名是wangweitung，则创建的项目名为 wangweitung.github.io。 用户名是你的github用户名哦！千万别弄错了，不然访问不到的！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wangweitung.github.io</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、将ssh秘钥添加到github中"><a href="#4、将ssh秘钥添加到github中" class="headerlink" title="4、将ssh秘钥添加到github中"></a>4、将ssh秘钥添加到github中</h3><p>&emsp;&emsp;即在名字，setting，ssh里面加入即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;参考:<a href="https://yiutto.github.io/2017/11/07/Hexo-Github-Windows搭建博客（终结版）/" target="_blank" rel="noopener">https://yiutto.github.io/2017/11/07/Hexo-Github-Windows%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E7%BB%88%E7%BB%93%E7%89%88%EF%BC%89/</a></p>
+<h2 id="五、配置Hexo，编译与部署"><a href="#五、配置Hexo，编译与部署" class="headerlink" title="五、配置Hexo，编译与部署"></a>五、配置Hexo，编译与部署</h2><p>&emsp;&emsp;还记得我们在_config.yml里最后一段的配置吗？根据刚才创建的GitHub项目填上repo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: git@github.com:wangweitung&#x2F;wangweitung.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;最后一步，编译，上传静态代码</p>
+<p>&emsp;&emsp;编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在主机的hexo目录下 执行以下命令将自动更新到Github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果出现以下异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR Deployer not found: git</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;尝试输入以下命令，然后重新执行刚刚的两条命令：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;这时候就可以通过刚才设置的github访问博客了。比如我的就是:wangweitung.github.io<br>至此你的博客就完成了。</p>
+<h2 id="六、hexo-怎么删除文章？"><a href="#六、hexo-怎么删除文章？" class="headerlink" title="六、hexo 怎么删除文章？"></a>六、hexo 怎么删除文章？</h2><p>&emsp;&emsp;删除文章的过程一样也很简单，先删除本地文件，然后通过生成和部署命令进而将远程仓库中的文件也一并删除。具体来说，以最开始默认形成的helloworld.md这篇文章为例。</p>
+<p>&emsp;&emsp;首先进入到source / _post 文件夹中，找到helloworld.md文件，在本地直接执行删除。然后依次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;再去主页查看你就会发现你的博客上面已经空空如也了，这就是如何删除文章的方法。</p>
+<h2 id="七、更换主题"><a href="#七、更换主题" class="headerlink" title="七、更换主题"></a>七、更换主题</h2><ol>
+<li>下载主题（themes）</li>
+<li>修改主目录文件夹中的_config.yml文件的theme配置</li>
+<li>执行hexo generta =&gt; hexo deploy将主题应用到自己最新的博客上面</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br><span class="line">$ ls</span><br><span class="line">_config.yml  node_modules  package.json  public  scaffolds  source  themes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd  &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br><span class="line">vi _config.yml</span><br><span class="line">cd  &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo&#x2F;themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在用主题：<a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">https://github.com/jerryc127/hexo-theme-butterfly</a></p>
+<p>&emsp;&emsp;其他主题：<a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank" rel="noopener">https://github.com/iTimeTraveler/hexo-theme-hiker</a></p>
+<h2 id="八、使用hexo-admin"><a href="#八、使用hexo-admin" class="headerlink" title="八、使用hexo-admin"></a>八、使用hexo-admin</h2><h3 id="1、原始方法："><a href="#1、原始方法：" class="headerlink" title="1、原始方法："></a>1、原始方法：</h3><p>&emsp;&emsp;在我们放置博客文件的文件夹Hexo中，source/_posts/目录下存放着所有博文的Markdown文件，初始化只有一个hello-world.md文件。<br>&emsp;&emsp;我们可以在ubuntu中创建新博文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在_posts目录下会生成相应的.md文件，接下来我们可以编辑该文件，直接写博文啦。注意使用Markdown语法。</p>
+<p><img src="https://oscimg.oschina.net/oscnet/7b2d3dc14415b268572ccdbc4ce835641dd.jpg" alt=""></p>
+<p>&emsp;&emsp;写完博文后，执行即可在博客中更新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;如果要删除博文，则直接把_posts目录下相应的.md文件删除，再执行上述命令即可。<br>&emsp;&emsp;PS：关于在博文中插入图片.<br>&emsp;&emsp;可以把图片统一放置在source/images目录下，然后在使用时用下述方式引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](&#x2F;images&#x2F;image.jpg)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Hexo-Admin插件管理"><a href="#2-Hexo-Admin插件管理" class="headerlink" title="2. Hexo Admin插件管理"></a>2. Hexo Admin插件管理</h3><p>&emsp;&emsp;可以看出，用原生的方法来管理博文十分的不便，因此便有了Hexo Admin这一插件来方便我们的操作。<br>&emsp;&emsp;首先，安装插件。 由于插件作者已经一年以上没有更新，可能会看到如图的一些警告与错误；之后的步骤虽然会遇到问题，但尚不至于影响使用。本地伺服器运作的时候，不管是在后台编辑文章，还是正在修改部落样式，只要直接按下 F5 重新整理页面，基本上是会<strong>即时显示新的样式/修改后的文章</strong> (除非更改样式后有语法错误)。</p>
+<p><img src="https://cdn1-t17.techbang.com/system/attached_images/2019/08/261850/original/6b7d80e82200487e3f0669b7166067da.png" alt=""></p>
+<p>&emsp;&emsp;安装hexo-admin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d</span><br><span class="line">open http:&#x2F;&#x2F;192.168.1.204:4000&#x2F;admin&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入setting，设置用户名和密码。</p>
+<p>If you’re using Hexo admin on your live server, you want some password protection. To enable this, you just add a few config variables to your hexo _config.yml。</p>
+<p>&emsp;&emsp;Copy this into your <code>_config.yml</code>, and restart Hexo. Now you’ll be protected with a password!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># hexo-admin authentification</span><br><span class="line">admin:</span><br><span class="line">  username: wwd</span><br><span class="line">  password_hash: ***$2a$10$rkX9gcltn9m9rmkFsC2CC.IEvR7Nvp3GMlVhclrKmO3Gn87IY.dk2</span><br><span class="line">  secret: what is the purpose of life?</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  _config.yml</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://oscimg.oschina.net/oscnet/1865ce1b8f0fa13ae97befbd33195b6b30c.jpg" alt=""></p>
+<p>&emsp;&emsp;然后，Deploy之前，还需要编辑配置文件_config.yml。(否则会出现Error: Config value “admin.deployCommand” not found或者Error: spawn hexo ENOENT之类的报错。)</p>
+<p><img src="https://cloud.githubusercontent.com/assets/109873/15278806/9f1a9afe-1aeb-11e6-8ce1-4593b9bdee23.png" alt=""></p>
+<p>&emsp;&emsp;如果是Windows则在末尾加上：</p>
+<p><img src="https://oscimg.oschina.net/oscnet/1e6a9d76cccf914ee9b8f2ff66b8c906520.jpg" alt=""></p>
+<p>&emsp;&emsp;如果是Linux系统则:</p>
+<p>&emsp;&emsp;再hexo文件夹，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch hexo-deploy.sh</span><br><span class="line">chmod a+x hexo-deploy.sh</span><br><span class="line">vi hexo-deploy.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env sh</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;然后再修改文件 _config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  _config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  username: wwd</span><br><span class="line">  password_hash: ***$2a$10$7BsDlvPtfmnXAHveotT7T.DgFN2W.AJsSAwObAv5trPCSXXJmDsEi</span><br><span class="line">  secret: what is the purpose of life?</span><br><span class="line">  deployCommand: &#39;.&#x2F;hexo-deploy.sh&#39;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;编辑完毕后，就可以点击Deploy，直接部署发布Github博客上。</p>
+<p><img src="https://oscimg.oschina.net/oscnet/928c4245cd3ea3bc6bf547d96ded44126fe.jpg" alt=""></p>
+<p>&emsp;&emsp;PS：关于Hexo Admin插入图片<br>&emsp;&emsp;Hexo Admin可以直接复制图片粘贴，然后自动下载到source/images目录并重命名。但在Windows中粘贴后会出现裂图。这时就需要手动把括号中的前后两个斜杠去掉，就能正常显示。</p>
+<p><img src="https://oscimg.oschina.net/oscnet/ddef70b8e6355ba7da1a9b04f53866a73ce.jpg" alt=""></p>
+<p><img src="https://oscimg.oschina.net/oscnet/3b6be82d762b0e5343f8da455097ee267e8.jpg" alt=""></p>
+<p>&emsp;&emsp;文章来源：<a href="https://segmentfault.com/a/1190000018488921" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018488921</a></p>
+<h2 id="九、实用教学"><a href="#九、实用教学" class="headerlink" title="九、实用教学"></a>九、实用教学</h2><p>&emsp;&emsp;加入“Read More”来截断文章。如果每篇文章都照原始篇幅来显示，那么首页就会非常非常的<del>长</del>。</p>
+<p><img src="https://cdn1-t17.techbang.com/system/attached_images/2019/08/261958/original/0e969d0aa238713e0f2157a6944d1dd3.png" alt=""></p>
+<p>&emsp;&emsp;要解决这个问题，只要在指定位置加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;也就是“继续阅读”的语法，就能在首页隐藏文章以下的部分。</p>
+<p><img src="https://cdn2-t17.techbang.com/system/attached_images/2019/08/261959/original/9f1672e6d7a6fc522cec3ecdb411bec6.png" alt=""></p>
+<p>&emsp;&emsp;回到首页后，文章多馀的部分会被隐藏。如果要阅读更多内容，除了能点选“Read More”，也能点选文章的标题。</p>
+<p><img src="https://cdn2-t17.techbang.com/system/attached_images/2019/08/261960/original/ab73c6842eae6c6ea82ec29dfb357edf.png" alt=""></p>
+<h2 id="十、文章状态在-Hexo-资料夹中的架构"><a href="#十、文章状态在-Hexo-资料夹中的架构" class="headerlink" title="十、文章状态在 Hexo 资料夹中的架构"></a>十、文章状态在 Hexo 资料夹中的架构</h2><p>&emsp;&emsp;所有的文章包含未发布、已发布、已删除的文章，都会以<strong>不同资料夹</strong>做区分，被放在 /Hexo资料夹/source 之下(如下图)。要注意的是，虽然从后台删除了文章，但其实文章还是会被存放在 /Hexo资料夹/source/_discarded 中。</p>
+<p><img src="https://cdn2-t17.techbang.com/system/attached_images/2019/08/261961/original/ec16d7be3e5e4c5f71dc134fcacaaeb2.png" alt=""></p>
+<p>&emsp;&emsp;另外，文章的档案是以“连结网址名称”来命名，所以如果要修改文章连结，后台是无法修改的，需<strong>直接修改档名</strong>。</p>
+<p>&emsp;&emsp;参考链接：<a href="https://ed521.github.io/2019/08/hexo-admin/" target="_blank" rel="noopener">https://ed521.github.io/2019/08/hexo-admin/</a></p>
+<h2 id="十一、问题解决"><a href="#十一、问题解决" class="headerlink" title="十一、问题解决"></a>十一、问题解决</h2><p>&emsp;&emsp;使用hexo-admin后有推送问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(node:1395) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">(node:1405) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">To github.com:wangweitung&#x2F;wangweitung.github.io.git</span><br><span class="line">   8b0c57e..4da19f9  HEAD -&gt; master</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;尝试以如下命令进行更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git hexo-server --save</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;问题仍未解决。</p>
+<p>&emsp;&emsp;解决办法：</p>
+<p>&emsp;&emsp;打开Disk\2Tsda\app\web\hexo\node_modules\hexo-admin\node_modules\hexo-fs\lib</p>
+<p>&emsp;&emsp;打开文件fs.js</p>
+<p>&emsp;&emsp;注释掉第718行。使用“//”注释。</p>
+<p>&emsp;&emsp;来源：</p>
+<p><a href="https://github.com/xovel/xovel.github.io/issues/28" target="_blank" rel="noopener">https://github.com/xovel/xovel.github.io/issues/28</a></p>
+<p><a href="https://github.com/hexojs/hexo/issues/2598" target="_blank" rel="noopener">https://github.com/hexojs/hexo/issues/2598</a></p>
+<p><a href="https://www.leiyawu.com/2018/02/28/hexo-fs-SyncWriteStream-is-deprecated/" target="_blank" rel="noopener">https://www.leiyawu.com/2018/02/28/hexo-fs-SyncWriteStream-is-deprecated/</a></p>
+<h2 id="十二、安装新主题butterfly的问题"><a href="#十二、安装新主题butterfly的问题" class="headerlink" title="十二、安装新主题butterfly的问题"></a>十二、安装新主题butterfly的问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br><span class="line">git clone -b master https:&#x2F;&#x2F;github.com&#x2F;Molunerfinn&#x2F;hexo-theme-melody themes&#x2F;melody</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;出现错误提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extends includes&#x2F;layout.pug block content #recent-posts.recent-posts include includes&#x2F;recent-posts.pug include includes&#x2F;pagination.pug #aside_content.aside_content include includes&#x2F;aside.pug</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果你没有pug以及stylus的渲染器，请下载安装： npm install hexo-renderer-jade hexo-renderer-stylus --save or yarn add hexo-renderer-jade hexo-renderer-stylus</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记得hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;参考：<a href="https://github.com/jerryc127/hexo-theme-butterfly/issues/4" target="_blank" rel="noopener">https://github.com/jerryc127/hexo-theme-butterfly/issues/4</a></p>
+<h2 id="十二、评论系统"><a href="#十二、评论系统" class="headerlink" title="十二、评论系统"></a>十二、评论系统</h2><h3 id="1、评论数据管理："><a href="#1、评论数据管理：" class="headerlink" title="1、评论数据管理："></a>1、评论数据管理：</h3><p>&emsp;&emsp;登录Leancloud<code>&gt;选择你创建的</code>应用<code>&gt;</code>存储<code>&gt;选择Class</code>Comment`，然后就可以尽情的发挥你的权利啦。</p>
+<h3 id="2、关于攻击："><a href="#2、关于攻击：" class="headerlink" title="2、关于攻击："></a>2、关于攻击：</h3><p>&emsp;&emsp;你可以开启验证码选项<code>verify: true</code></p>
+<h2 id="十三、配置搜索"><a href="#十三、配置搜索" class="headerlink" title="十三、配置搜索"></a>十三、配置搜索</h2><p>1、首先注册Algolia账户</p>
+<p>&emsp;&emsp;Algolia 登陆页面<a href="https://www.algolia.com/users/sign_in，可以使用" target="_blank" rel="noopener">https://www.algolia.com/users/sign_in，可以使用</a> GitHub 或者 Google 账户直接登录，也可以注册一个新账户。</p>
+<p>2、注册完成后，创建一个新的 Index，这个 index name 之后会用到。我创建了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mygithubsearch</span><br></pre></td></tr></table></figure>
+
+<p>3、修改Algolia搜索ACL（访问控制列表），如果不能修改，则需要新建一个。在选项里勾选上图选项。</p>
+<p><img src="https://raw.githubusercontent.com/wangweitung/image/master/img/20200504133545.png" alt="2020-05-04_114940"></p>
+<p>4、获取 Key，更新站点根目录配置。前往站点根目录/home/Disk/2Tsda/app/web/hexo打开_config.yml添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">algolia:</span><br><span class="line">  applicationID: &#39;SOFJLCX0IW&#39;</span><br><span class="line">  apiKey: &#39;74998d40bfca62cdc3aef726d0b59cdc&#39;</span><br><span class="line">  indexName: &#39;mygithubsearch&#39;</span><br></pre></td></tr></table></figure>
+
+<p>5、Index 创建完成后，此时这个 Index 里未包含任何数据。 接下来需要安装 Hexo Algolia 扩展， 这个扩展的功能是搜集站点的内容并通过 API 发送给 Algolia。前往站点根目录，执行命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br><span class="line">hexo algolia &amp;&amp; hexo g &amp;&amp; hexo d </span><br><span class="line">npm install hexo-algolia --save</span><br></pre></td></tr></table></figure>
+
+<p>6、设置环境变量，algolia 官网声明，Admin API Key 不能写在配置里，会有风险，写到环境变量中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HEXO_ALGOLIA_INDEXING_KEY&#x3D;74998d40bfca62cdc3aef726d0b59cdc</span><br></pre></td></tr></table></figure>
+
+<p>7、生成 algolia 索引，提示成功后可以在 algolia Indices 中看到你的博客记录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo algolia</span><br></pre></td></tr></table></figure>
+
+<p>8、修改 melody配置。Disk\2Tsda\app\web\hexo\source_data内的melody.yml</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">algolia_search:</span><br><span class="line">  enable: <span class="literal">true</span></span><br><span class="line">  hits:</span><br><span class="line">    per_page: <span class="number">10</span></span><br><span class="line">  labels:</span><br><span class="line">    input_placeholder: Search <span class="keyword">for</span> Posts</span><br><span class="line">    hits_empty: <span class="string">"We didn't find any results for the search: $&#123;query&#125;"</span> <span class="meta"># <span class="meta-keyword">if</span> there are no result</span></span><br><span class="line">    hits_stats: <span class="string">"$&#123;hits&#125; results found in $&#123;time&#125; ms"</span></span><br></pre></td></tr></table></figure>
+
+<p>9、更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo algolia # 每次写完一篇文章后都需要执行一次（有点尴尬）</span><br></pre></td></tr></table></figure>
+
+<p>10、问题</p>
+<p>&emsp;&emsp;Not enough rights to update an object near</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/10/1634907c472f07d4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>&emsp;&emsp;原因：没有修改Algolia搜索ACL（访问控制列表），按照3操作。</p>
+<h2 id="十四、顶部图"><a href="#十四、顶部图" class="headerlink" title="十四、顶部图"></a>十四、顶部图</h2><p>&emsp;&emsp;为特定的文章页配置特定的顶部图，在你的文章<code>md</code>文件的头部，加入<code>top_img</code>项，然后输入你想要的顶部图的url即可。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Hi,</span> <span class="string">theme-melody!</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">theme</span></span><br><span class="line"><span class="attr">top_img:</span> <span class="string">https://xxxxxxx.jpg</span>   <span class="comment"># &lt; top_img在这里插入</span></span><br><span class="line"><span class="string">cover：</span> </span><br><span class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="number">-09</span><span class="number">-07</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="十五、设置二级分类"><a href="#十五、设置二级分类" class="headerlink" title="十五、设置二级分类"></a>十五、设置二级分类</h2><p>&emsp;&emsp;来自：<a href="https://www.zhihu.com/question/57888214" target="_blank" rel="noopener">https://www.zhihu.com/question/57888214</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Plant Simulation</span><br><span class="line">date: 2017-04-01 00:44:21</span><br><span class="line">categories: </span><br><span class="line">- Plant Simulation</span><br><span class="line">- AGV</span><br><span class="line">- SimTalk语句</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="十六、更新文章目录、索引、及发布"><a href="#十六、更新文章目录、索引、及发布" class="headerlink" title="十六、更新文章目录、索引、及发布"></a>十六、更新文章目录、索引、及发布</h2><h3 id="1、写文章命令"><a href="#1、写文章命令" class="headerlink" title="1、写文章命令"></a>1、写文章命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;web&#x2F;hexo</span><br><span class="line">hexo new ***</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、发布命令"><a href="#2、发布命令" class="headerlink" title="2、发布命令"></a>2、发布命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HEXO_ALGOLIA_INDEXING_KEY&#x3D;74998d40bfca62cdc3aef726d0b59cdc &amp;&amp; hexo algolia --flush true &amp;&amp; hexo algolia &amp;&amp;  hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="十七、索引更新"><a href="#十七、索引更新" class="headerlink" title="十七、索引更新"></a>十七、索引更新</h2><p>&emsp;&emsp;使用 hexo-algolia 时，如果你删除了文章，需要更新 Algolia 里面的链接，需要使用以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export HEXO_ALGOLIA_INDEXING_KEY&#x3D;74998d40bfca62cdc3aef726d0b59cdc</span><br><span class="line">hexo algolia --flush true </span><br><span class="line">hexo algolia &amp;&amp;  hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;hexo-algolia 模块的作用：将博客文章链接发送给自己的 Algolia 账户。搜索原理：输入关键字，调用 Algolia 提供接口，返回相应文章链接</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">wangweitung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangweitung.github.io/posts/2020/05/04/00/05.html">https://wangweitung.github.io/posts/2020/05/04/00/05.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangweitung.github.io" target="_blank">记录我自己</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a></div><div class="post_share"><div class="social-share" data-image="http://wangweitung.tk:3800/uploads/big/d13e0f92f8a77e2b2164311af79947de.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/posts/2020/05/04/00/05.html"><img class="prev_cover" src="http://wangweitung.tk:3800/uploads/big/1acc687cb76c7bd6f2a1e37fd572f801.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Wordpress问题解决</div></div></a></div><div class="next-post pull_right"><a href="/posts/2020/05/03/22/12.html"><img class="next_cover" src="https://i.loli.net/2020/05/06/1ahW87sKNAI4jRL.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/posts/2020/05/14/20/58.html" title="在博客中插入视频"><img class="relatedPosts_cover" src="https://i.loli.net/2020/05/06/VoIitMYxND3XmGw.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-14</div><div class="relatedPosts_title">在博客中插入视频</div></div></a></div><div class="relatedPosts_item"><a href="/posts/2020/05/09/12/20.html" title="宝塔面板设置自动更新hexo博客"><img class="relatedPosts_cover" src="http://wangweitung.tk:3800/uploads/big/5ba155108598b94ed3d7d9c453204310.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-09</div><div class="relatedPosts_title">宝塔面板设置自动更新hexo博客</div></div></a></div><div class="relatedPosts_item"><a href="/posts/2020/05/05/11/12.html" title="Markdown的一些小技巧"><img class="relatedPosts_cover" src="https://i.loli.net/2020/05/06/oHPeUp8rCsk4ifK.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-05</div><div class="relatedPosts_title">Markdown的一些小技巧</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail','link'],'nick')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'cD6uDwOOPPz0tISpIDVLvx4Q-gzGzoHsz',
+  appKey: 'DjfIdbQilT6OOV8FUjb9vlGu',
+  notify: true,
+  verify: true,
+  placeholder: '欢迎留言~~~',
+  avatar: 'wavatar',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: true,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By wangweitung</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="/js/search/algolia.js"></script></body></html>
