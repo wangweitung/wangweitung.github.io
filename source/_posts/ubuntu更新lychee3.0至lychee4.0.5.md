@@ -52,6 +52,14 @@ composer install --no-dev
 composer install --ignore-platform-reqs
 ```
 
+如果报错：
+
+![](https://raw.githubusercontent.com/wangweitung/image/master/img/2020-05-17_095204.png)
+
+1、根据错误提示安装php扩展fileinfo
+
+2、切换为非root帐户安装。
+
 ## 五、复制文件
 
 ```
