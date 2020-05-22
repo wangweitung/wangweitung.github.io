@@ -516,7 +516,7 @@ hr:
 subtitle:
   enable: true
   # 打字效果
-  effect: false
+  effect: true
   # 循環或者只打字一次
   loop: true
   # source調用第三方服務
