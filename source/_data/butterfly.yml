@@ -333,17 +333,17 @@ tencent_analytics:
 # ---------------
 # Google Adsense
 google_adsense:
-  enable: false
+  enable: true
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client:
+  client: ca-pub-7432049388196920
   enable_page_level_ads: true
 
 # 廣告插入位置
 # 適用於開啓手動廣告的配置
-# ad:
-#   index:
-#   aside:
-#   post:
+ad:
+  index: <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-7432049388196920" data-ad-slot="9603106519"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  aside: <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-7432049388196920" data-ad-slot="9603106519"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+  post: <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-7432049388196920" data-ad-slot="9603106519"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
 
 ####    站長驗證    ####
 # Google Webmaster tools verification setting

@@ -1,5 +1,5 @@
 ---
-title: 在typecho网站页脚显示稳定运行时长
+title: typecho网站页脚显示稳定运行时长
 id: A5
 tags:
   - tpyecho
@@ -12,7 +12,7 @@ cover:
 ---
 
 
-# 在typecho网站页脚显示稳定运行时长
+# typecho网站页脚显示稳定运行时长
 
 一、找到对应的显示文件 
 

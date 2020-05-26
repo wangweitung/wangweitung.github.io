@@ -1,5 +1,5 @@
 ---
-title: AGV的用法
+title: PlantSimulation中AGV的用法
 id: A7
 cover: 'http://wangweitung.tk:3800/uploads/big/8cccde9ea7e3d64004ef2b8dfeb26f74.png'
 tags: AGV
@@ -10,7 +10,7 @@ abbrlink: 15008
 date: 2020-05-04 18:18:17
 ---
 
-# AGV的用法
+# PlantSimulation中AGV的用法
 
 ## 一、设置AGV的安全距离。
 
