@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>iKuai+OpenWRT | 记录我自己</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="iKuai+OpenWRTikuai 装物理机，然后开启 ikuai 虚拟机功能，虚拟机内装 openwrt 。 ikuai 的 LAN 口网关 IP 指向虚拟机内的 openwrt 。 openwrt 内只保留 LAN ，openwrt 里只有 passwall。 适合不折腾的人，还可以指定哪些 IP 走 openwrt ，哪些不走（客人蹭网等），依靠 DHCP 分配 IP 和网关实现（网关指向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iKuai+OpenWRT">
+<meta property="og:url" content="https://wangweitung.tk/2024.03.15iKuai+OpenWRT/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="iKuai+OpenWRTikuai 装物理机，然后开启 ikuai 虚拟机功能，虚拟机内装 openwrt 。 ikuai 的 LAN 口网关 IP 指向虚拟机内的 openwrt 。 openwrt 内只保留 LAN ，openwrt 里只有 passwall。 适合不折腾的人，还可以指定哪些 IP 走 openwrt ，哪些不走（客人蹭网等），依靠 DHCP 分配 IP 和网关实现（网关指向">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:published_time" content="2024-03-15T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-03T08:20:30.332Z">
+<meta property="article:author" content="wangweitung">
+<meta property="article:tag" content="ikuai">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "iKuai+OpenWRT",
+  "url": "https://wangweitung.tk/2024.03.15iKuai+OpenWRT/",
+  "image": "https://pic.wmch.tk:5/2025/05/25/avatar.jpg",
+  "datePublished": "2024-03-15T03:00:00.000Z",
+  "dateModified": "2025-06-03T08:20:30.332Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wangweitung",
+      "url": "https://wangweitung.tk/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/2024.03.15iKuai+OpenWRT/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'iKuai+OpenWRT',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a><a class="nav-page-title" href="/"><span class="site-name">iKuai+OpenWRT</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">iKuai+OpenWRT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-15T03:00:00.000Z" title="发表于 2024-03-15 11:00:00">2024-03-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-03T08:20:30.332Z" title="更新于 2025-06-03 16:20:30">2025-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/">OpenWRT</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/ikuai/">ikuai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="iKuai-OpenWRT"><a href="#iKuai-OpenWRT" class="headerlink" title="iKuai+OpenWRT"></a>iKuai+OpenWRT</h3><p>ikuai 装物理机，然后开启 ikuai 虚拟机功能，虚拟机内装 openwrt 。</p>
+<p>ikuai 的 LAN 口网关 IP 指向虚拟机内的 openwrt 。</p>
+<p>openwrt 内只保留 LAN ，openwrt 里只有 passwall。</p>
+<p>适合不折腾的人，还可以指定哪些 IP 走 openwrt ，哪些不走（客人蹭网等），依靠 DHCP 分配 IP 和网关实现（网关指向 ikuai 或 openwrt ）。</p>
+<h3 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h3><p>iKuai和OpenWrt主旁路由全局DNS设置</p>
+<p><a target="_blank" rel="noopener" href="https://www.yydnas.cn/2023/11/2023.11.09-iKuai%E5%92%8COpenWrt%E4%B8%BB%E6%97%81%E8%B7%AF%E7%94%B1%E5%85%A8%E5%B1%80DNS%E8%AE%BE%E7%BD%AE/index.html">https://www.yydnas.cn/2023/11/2023.11.09-iKuai%E5%92%8COpenWrt%E4%B8%BB%E6%97%81%E8%B7%AF%E7%94%B1%E5%85%A8%E5%B1%80DNS%E8%AE%BE%E7%BD%AE/index.html</a></p>
+<h3 id="后台维护"><a href="#后台维护" class="headerlink" title="后台维护"></a>后台维护</h3><p>爱快aikuai软路由远程维护 ssh登录密码22端口Xshell putty</p>
+<p>此处是爱快开发人员所使用的一个通道，不开放给用户使用。默认是关闭的状态，需要爱快开发人员看后台数据的时候，用户要开启这个开关才可以。</p>
+<p><img src="https://www.itxiaoniao.cn/usr/uploads/2020/10/2923127723.jpg"></p>
+<p>默认爱快路由系统里面的22端口维护是给客服开发人员使用的，自己要怎么登录呢？用root和admin都登录不了。</p>
+<p>原来用户名是sshd，勾选打开22端口并设置密码后，可以用sshd和你设置的密码登录，登录后和爱快控制台是一样功能的。</p>
+<p><img src="https://www.itxiaoniao.cn/usr/uploads/2020/10/400095361.jpg"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangweitung.tk">wangweitung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangweitung.tk/2024.03.15iKuai+OpenWRT/">https://wangweitung.tk/2024.03.15iKuai+OpenWRT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangweitung.tk" target="_blank">记录我自己</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ikuai/">ikuai</a></div><div class="post-share"><div class="social-share" data-image="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023.12.30%E7%A6%BB%E8%81%8C%E4%BF%A1/" title="离职信"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">离职信</div></div><div class="info-2"><div class="info-item-1">一封离职信 </div></div></div></a><a class="pagination-related" href="/2024.03.15%E5%8F%8D%E4%BB%A3kodbox/" title="反代kodbox"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">反代kodbox</div></div><div class="info-2"><div class="info-item-1">背景docker安装kodbox、calibre-web、nginx proxy manager、cloudflared tunnels。 然后设置反代。以实现域名访问。 kodbox设置反代1234567location / &#123;proxy_pass http://192.168.2.107:8092;proxy_set_header Host $http_host;proxy_set_header X-Real-IP $remote_addr;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;proxy_set_header X-Forwarded-Proto $scheme;&#125;  具体设置方法如下:  calibre-web反代通过Nginx Proxy Manager反代访问calibre-web不能登录和搜索 1234567891011121314location / &#123; proxy_pass http://192.168.2.107:8086/;...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024.05.04ikuai%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E6%97%A0%E6%95%88/" title="ikuai端口转发无效"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-04</div><div class="info-item-2">ikuai端口转发无效</div></div><div class="info-2"><div class="info-item-1">问题 突然发现在外部无法通过域名+端口的模式访问内部服务。 排查了很久才找到原因。竟然是ikuai主路由和OpenWRT旁路由导致的。  解决： 进入OpenWRT旁路由，进入【网络】-【防火墙】-【基本设置】-取消勾选-【IP 动态伪装】-应用。  参考链接： https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=4127104 https://post.smzdm.com/p/ao9qw6xr/ https://v2ex.com/t/939014 https://www.bilibili.com/read/cv26251193/ https://www.jackiewu.top/article/best-alternative-solution-for-transparent-gateway https://www.bilibili.com/read/cv26251193/  </div></div></div></a><a class="pagination-related" href="/2025.05.31%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E7%88%B1%E5%BF%AB/" title="端口转发无法访问爱快"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-31</div><div class="info-item-2">端口转发无法访问爱快</div></div><div class="info-2"><div class="info-item-1">在ikuai设置了端口转发。 域名+1000转发至内网10.1.1.1+80，结果无法访问。后来发现是ikuai里面有个设置没开导致，具体如下： 登录SSH，选择o选项，然后开启外网访问web即可。   </div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iKuai-OpenWRT"><span class="toc-text">iKuai+OpenWRT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEDNS"><span class="toc-text">设置DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%BB%B4%E6%8A%A4"><span class="toc-text">后台维护</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/2024.03.15iKuai+OpenWRT/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://wangweitung.tk/2024.03.15iKuai+OpenWRT/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = 'iKuai+OpenWRT'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

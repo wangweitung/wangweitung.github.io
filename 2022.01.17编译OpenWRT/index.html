@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译OpenWRT步骤 | 记录我自己</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第1次编译 进入ubuntu server的非root账户。 进入目录：  1cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app  按照lede的网址，进行刚开始的设置：  1https:&#x2F;&#x2F;github.com&#x2F;coolsnowwolf&#x2F;lede&#x2F;  更新系统  1sudo apt-get update &amp;&amp; sudo apt-get upgrade  安装依赖  1sudo apt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译OpenWRT步骤">
+<meta property="og:url" content="https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="第1次编译 进入ubuntu server的非root账户。 进入目录：  1cd &#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app  按照lede的网址，进行刚开始的设置：  1https:&#x2F;&#x2F;github.com&#x2F;coolsnowwolf&#x2F;lede&#x2F;  更新系统  1sudo apt-get update &amp;&amp; sudo apt-get upgrade  安装依赖  1sudo apt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:published_time" content="2022-01-17T14:16:33.000Z">
+<meta property="article:modified_time" content="2025-06-03T08:20:30.332Z">
+<meta property="article:author" content="wangweitung">
+<meta property="article:tag" content="编译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "编译OpenWRT步骤",
+  "url": "https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/",
+  "image": "https://pic.wmch.tk:5/2025/05/25/avatar.jpg",
+  "datePublished": "2022-01-17T14:16:33.000Z",
+  "dateModified": "2025-06-03T08:20:30.332Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wangweitung",
+      "url": "https://wangweitung.tk/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编译OpenWRT步骤',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a><a class="nav-page-title" href="/"><span class="site-name">编译OpenWRT步骤</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">编译OpenWRT步骤</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-17T14:16:33.000Z" title="发表于 2022-01-17 22:16:33">2022-01-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-03T08:20:30.332Z" title="更新于 2025-06-03 16:20:30">2025-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/">OpenWRT</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="第1次编译"><a href="#第1次编译" class="headerlink" title="第1次编译"></a>第1次编译</h2><ol>
+<li>进入ubuntu server的非root账户。</li>
+<li>进入目录：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>按照lede的网址，进行刚开始的设置：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/coolsnowwolf/lede/</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>更新系统</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>安装依赖</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>下载源码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/coolsnowwolf/lede</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>进入lede，进入目录：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd lede</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>更新源码:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>下载dl库（国内请尽量全局科学上网）。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j8 download V=s</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>选择所需要的组件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译丰富插件时，建议修改下面两项默认大小，留足插件空间。（ x86&#x2F;64 ）<br>Target Images —&gt; (16) Kernel partition size (in MB) #默认是 (16) 建议修改 (256)<br>Target Images —&gt; (160) Root filesystem partition size (in MB) #默认是 (160) 建议修改 (512)</li>
+<li>支持 iPv6：（现阶段不需要，会导致电视的YouTubeNext无法播放）<br>Extra packages —&gt; ipv6helper （选定这个后下面几项自动选择了）<br>Network —&gt; odhcp6c<br>Network —&gt; odhcpd-ipv6only<br>LuCI —&gt; Protocols —&gt; luci-proto-ipv6<br>LuCI —&gt; Protocols —&gt; luci-proto-ppp</li>
+<li>我需要的插件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">我所需要的插件</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">luci-app-accesscontrol</td>
+<td align="center">上网时间控制</td>
+</tr>
+<tr>
+<td align="center">luci-app-adbyby-plus</td>
+<td align="center">广告屏蔽大师Plus +</td>
+</tr>
+<tr>
+<td align="center">luci-app-advancedsetting</td>
+<td align="center">系统 -高级设置</td>
+</tr>
+<tr>
+<td align="center">luci-app-arpbind</td>
+<td align="center">IP&#x2F;MAC绑定</td>
+</tr>
+<tr>
+<td align="center">luci-app-autoreboot</td>
+<td align="center">自动重启</td>
+</tr>
+<tr>
+<td align="center">luci-app-ddns</td>
+<td align="center">动态域名解析</td>
+</tr>
+<tr>
+<td align="center">luci-app-filetransfer</td>
+<td align="center">系统-文件传输</td>
+</tr>
+<tr>
+<td align="center">luci-app-firewall</td>
+<td align="center">防火墙</td>
+</tr>
+<tr>
+<td align="center">luci-app-jd-dailybonus</td>
+<td align="center">京东自动签到</td>
+</tr>
+<tr>
+<td align="center">luci-app-nlbwmon</td>
+<td align="center">网络带宽监视器</td>
+</tr>
+<tr>
+<td align="center">luci-app-ramfree</td>
+<td align="center">释放内存</td>
+</tr>
+<tr>
+<td align="center">luci-app-serverchan</td>
+<td align="center">服务-微信推送</td>
+</tr>
+<tr>
+<td align="center">luci-app-upnp</td>
+<td align="center">通用即插即用UPnP(端口自动转发)</td>
+</tr>
+<tr>
+<td align="center">luci-app-vlmcsd</td>
+<td align="center">KMS服务器（WIN激活工具）</td>
+</tr>
+<tr>
+<td align="center">luci-app-vssr</td>
+<td align="center">服务-Hello world</td>
+</tr>
+<tr>
+<td align="center">luci-app-wol</td>
+<td align="center">网络唤醒</td>
+</tr>
+<tr>
+<td align="center">luci-app-wrtbwmon</td>
+<td align="center">实时流量监测</td>
+</tr>
+<tr>
+<td align="center">luci-app-zerotier</td>
+<td align="center">zerotier服务</td>
+</tr>
+<tr>
+<td align="center">luci-app-flowoffload</td>
+<td align="center">Turbo ACC FLOW转发加速</td>
+</tr>
+<tr>
+<td align="center">luci-app-sfe</td>
+<td align="center">Turbo ACC网络加速(开启Fast Path转发加速)</td>
+</tr>
+<tr>
+<td align="center">luci-app-usb-printer USB</td>
+<td align="center">打印服务器</td>
+</tr>
+</tbody></table>
+<ul>
+<li>如果想在编译的固件加上日期，修改<br>文件位置：&#x2F;home&#x2F;Disk&#x2F;2Tsda&#x2F;app&#x2F;lede&#x2F;include&#x2F;image.mk的第40行为：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMG_PREFIX:=$(shell date +&quot;%Y%m%d%M&quot;)-$(VERSION_DIST_SANITIZED)-$(IMG_PREFIX_VERNUM)$(IMG_PREFIX_VERCODE)$(IMG_PREFIX_EXTRA)$(BOARD)$(if $(SUBTARGET),-$(SUBTARGET))</span><br></pre></td></tr></table></figure>
+<p>含义：<br>在固件的名字前加上时间戳：$(shell date +”%Y%m%d%M”)<br>结果是：2022011543-openwrt-x86-64-generic-squashfs-rootfs.img<br>我的命令是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMG_PREFIX:=$(shell date +&quot;%m%d%M%S&quot;)-$(VERSION_DIST_SANITIZED)-$(IMG_PREFIX_VERNUM)$(IMG_PREFIX_VERCODE)$(IMG_PREFIX_EXTRA)$(BOARD)$(if $(SUBTARGET),-$(SUBTARGET))</span><br></pre></td></tr></table></figure>
+<p>输出的文件名是（月+日+分钟+秒+名字）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01155224-openwrt-x86-64-generic-squashfs-rootfs.img</span><br></pre></td></tr></table></figure>
+<p>我的命令是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMG_PREFIX:=$(shell date +&quot;%m%d-%M%S&quot;)-$(VERSION_DIST_SANITIZED)-$(IMG_PREFIX_VERNUM)$(IMG_PREFIX_VERCODE)$(IMG_PREFIX_EXTRA)$(BOARD)$(if $(SUBTARGET),-$(SUBTARGET))</span><br></pre></td></tr></table></figure>
+<p>输出的文件名是（月日+分秒+名字）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0115-2829-openwrt-x86-64-generic-squashfs-rootfs.img</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入<code>/package/base-files/files/etc/config</code>上传原来的network文件</li>
+</ul>
+<ol start="10">
+<li>开始编译：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j5 V=s</span><br></pre></td></tr></table></figure>
+<p>　　默认登陆IP 192.168.1.1, 密码 password</p>
+<ul>
+<li>第1次编译快捷命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app &amp;&amp; git clone https://github.com/coolsnowwolf/lede &amp;&amp; cd lede &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a &amp;&amp; cd /home/Disk/2Tsda/app/lede/package/lean &amp;&amp; svn checkout https://github.com/fszok/luci-app-advancedsetting/trunk luci-app-advancedsetting &amp;&amp; svn checkout https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr &amp;&amp; svn checkout https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb &amp;&amp; svn checkout https://github.com/yichya/luci-app-xray/trunk  luci-app-xray &amp;&amp; svn checkout https://github.com/kenzok8/small/trunk small &amp;&amp; svn checkout https://github.com/yichya/openwrt-xray/trunk  openwrt-xray &amp;&amp; cd /home/Disk/2Tsda/app/lede &amp;&amp; git pull &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a  &amp;&amp; make -j8 download V=s &amp;&amp; make menuconfig &amp;&amp; make -j5 V=s</span><br></pre></td></tr></table></figure>
+
+<h2 id="第2次编译"><a href="#第2次编译" class="headerlink" title="第2次编译"></a>第2次编译</h2><ul>
+<li>第2次编译快捷命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app/lede/package/lean &amp;&amp; svn checkout https://github.com/fszok/luci-app-advancedsetting/trunk luci-app-advancedsetting &amp;&amp; svn checkout https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr &amp;&amp; svn checkout https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb &amp;&amp; svn checkout https://github.com/yichya/luci-app-xray/trunk  luci-app-xray &amp;&amp; svn checkout https://github.com/kenzok8/small/trunk small &amp;&amp; svn checkout https://github.com/yichya/openwrt-xray/trunk  openwrt-xray &amp;&amp; cd /home/Disk/2Tsda/app/lede &amp;&amp; git pull &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a  &amp;&amp;  make -j8 download V=s &amp;&amp; rm -rf ./tmp &amp;&amp; make -j5 V=s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调整后</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app/lede/package/lean &amp;&amp; rm -rf luci-app-advancedsetting &amp;&amp; rm -rf luci-app-vssr &amp;&amp; rm -rf lua-maxminddb &amp;&amp; rm -rf luci-app-xray &amp;&amp; rm -rf   small  &amp;&amp; rm -rf  openwrt-xray  &amp;&amp; svn checkout https://github.com/fszok/luci-app-advancedsetting/trunk luci-app-advancedsetting &amp;&amp; svn checkout https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr &amp;&amp; svn checkout https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb &amp;&amp; svn checkout https://github.com/yichya/luci-app-xray/trunk  luci-app-xray &amp;&amp; svn checkout https://github.com/kenzok8/small/trunk small &amp;&amp; svn checkout https://github.com/yichya/openwrt-xray/trunk  openwrt-xray &amp;&amp; cd /home/Disk/2Tsda/app/lede &amp;&amp; git pull &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a  &amp;&amp;  make -j8 download V=s &amp;&amp; rm -rf ./tmp &amp;&amp; make -j5 V=s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再次调整（删掉了advancesetting，保留了其他）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app/lede/package/lean  &amp;&amp; rm -rf luci-app-vssr &amp;&amp; rm -rf lua-maxminddb &amp;&amp; rm -rf luci-app-xray &amp;&amp; rm -rf   small  &amp;&amp; rm -rf  openwrt-xray   &amp;&amp; svn checkout https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr &amp;&amp; svn checkout https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb &amp;&amp; svn checkout https://github.com/yichya/luci-app-xray/trunk  luci-app-xray &amp;&amp; svn checkout https://github.com/kenzok8/small/trunk small &amp;&amp; svn checkout https://github.com/yichya/openwrt-xray/trunk  openwrt-xray &amp;&amp; cd /home/Disk/2Tsda/app/lede &amp;&amp; git pull &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a  &amp;&amp;  make -j8 download V=s &amp;&amp; rm -rf ./tmp &amp;&amp; make -j5 V=s</span><br></pre></td></tr></table></figure>
+
+<h3 id="之前用的更新插件的命令："><a href="#之前用的更新插件的命令：" class="headerlink" title="之前用的更新插件的命令："></a>之前用的更新插件的命令：</h3><ol>
+<li>进入文件目录</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app/lede/package/lean</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用以下命令更新：下载插件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">svn checkout https://github.com/fszok/luci-app-advancedsetting/trunk luci-app-advancedsetting</span><br><span class="line">svn checkout https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr</span><br><span class="line">svn checkout https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb</span><br><span class="line">svn checkout https://github.com/yichya/luci-app-xray/trunk luci-app-xray</span><br><span class="line">svn checkout https://github.com/kenzok8/small/trunk small</span><br><span class="line">svn checkout https://github.com/yichya/openwrt-xray/trunk openwrt-xray</span><br><span class="line">可选</span><br><span class="line">svn checkout https://github.com/iv7777/luci-app-pptp-server/trunk luci-app-pptp-server</span><br><span class="line">svn checkout https://github.com/rufengsuixing/luci-app-adguardhome/trunk  luci-app-adguardhome</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>SVN的用法参考<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tqj-zyy/p/4559758.html">https://www.cnblogs.com/tqj-zyy/p/4559758.html</a></li>
+</ol>
+<h3 id="问题1-无法覆盖"><a href="#问题1-无法覆盖" class="headerlink" title="问题1 无法覆盖"></a>问题1 无法覆盖</h3><ol>
+<li>Please commit your changes or stash them before you merge。解决方法：直接完全覆盖本地修改</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2-缺少vssr的依赖"><a href="#问题2-缺少vssr的依赖" class="headerlink" title="问题2 缺少vssr的依赖"></a>问题2 缺少vssr的依赖</h3><ol>
+<li>缺少依赖</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Makefile &#x27;package/lean/luci-app-vssr/Makefile&#x27; has a dependency on &#x27;xray-plugin&#x27;, which does not exist</span><br><span class="line">WARNING: Makefile &#x27;package/lean/luci-app-xray/Makefile&#x27; has a dependency on &#x27;openwrt-xray&#x27;, which does not exist</span><br></pre></td></tr></table></figure>
+<p>　　解决<br>　　<a target="_blank" rel="noopener" href="https://github.com/kenzok8/small">https://github.com/kenzok8/small</a><br>　　<a target="_blank" rel="noopener" href="https://github.com/yichya/openwrt-xray">https://github.com/yichya/openwrt-xray</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /home/Disk/2Tsda/app/lede/package</span><br><span class="line">git clone https://github.com/kenzok8/small.git</span><br><span class="line">git clone https://github.com/yichya/openwrt-xray.git</span><br><span class="line">cd /home/Disk/2Tsda/app/lede</span><br><span class="line">git pull</span><br><span class="line">./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a</span><br><span class="line">make menuconfig</span><br><span class="line">make -j5 V=s</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>第二种报错</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Makefile &#x27;package/feeds/helloworld/luci-app-ssr-plus/Makefile&#x27; has a dependency on &#x27;shadowsocksr-libev-alt&#x27;, which does not exist</span><br><span class="line">WARNING: Makefile &#x27;package/feeds/helloworld/luci-app-ssr-plus/Makefile&#x27; has a dependency on &#x27;shadowsocksr-libev-server&#x27;, which does not exist</span><br></pre></td></tr></table></figure>
+<p>　　这个是lean的ssr-plus缺的依赖，不编译它，所以可以不用管。</p>
+<h3 id="问题3-缺少dl文件夹内的文件"><a href="#问题3-缺少dl文件夹内的文件" class="headerlink" title="问题3 缺少dl文件夹内的文件"></a>问题3 缺少dl文件夹内的文件</h3><ol>
+<li>文件下载错误导致</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Makefile:44: recipe for target &#x27;/home/Disk/2Tsda/app/lede/dl/vlmcsd-svn1113.tar.gz&#x27; failed</span><br><span class="line">make[3]: *** [/home/Disk/2Tsda/app/lede/dl/vlmcsd-svn1113.tar.gz] Error 2</span><br><span class="line">make[3]: Leaving directory &#x27;/home/Disk/2Tsda/app/lede/package/lean/vlmcsd&#x27;</span><br><span class="line">time: package/lean/vlmcsd/compile#0.27#0.13#0.40</span><br><span class="line">    ERROR: package/lean/vlmcsd failed to build.</span><br><span class="line">package/Makefile:114: recipe for target &#x27;package/lean/vlmcsd/compile&#x27; failed</span><br><span class="line">make[2]: *** [package/lean/vlmcsd/compile] Error 1</span><br><span class="line">make[2]: Leaving directory &#x27;/home/Disk/2Tsda/app/lede&#x27;</span><br><span class="line">package/Makefile:110: recipe for target &#x27;/home/Disk/2Tsda/app/lede/staging_dir/target-x86_64_musl/stamp/.package_compile&#x27; failed</span><br><span class="line">make[1]: *** [/home/Disk/2Tsda/app/lede/staging_dir/target-x86_64_musl/stamp/.package_compile] Error 2</span><br><span class="line">make[1]: Leaving directory &#x27;/home/Disk/2Tsda/app/lede&#x27;</span><br><span class="line">/home/Disk/2Tsda/app/lede/include/toplevel.mk:228: recipe for target &#x27;world&#x27; failed</span><br><span class="line">make: *** [world] Error 2</span><br></pre></td></tr></table></figure>
+<p>　　<a target="_blank" rel="noopener" href="https://github.com/coolsnowwolf/lede/issues/3831">灵感来源的链接</a><br>　　编译错误提示如下，可以看出是vlmcsd-svn1113.tar.gz这个文件没有下载导致的。<br>　　因此下载这个文件后，把它放在<code>/home/Disk/2Tsda/app/lede/dl</code>中，即可。<br>　　或者可以通过命令下载全部依赖包：<code>make download V=s</code><br>　　如果还是不行，通过命令清理缓存：<code>make clean</code><br>　　<img src="https://pic.wmch.tk:5/2025/05/25/2021.07.05Download-package1.png"></p>
+<p><img src="https://pic.wmch.tk:5/2025/05/25/2021.07.05test.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangweitung.tk">wangweitung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/">https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangweitung.tk" target="_blank">记录我自己</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91/">编译</a></div><div class="post-share"><div class="social-share" data-image="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2022.01.03%E5%AF%B9%E6%96%B0%E6%89%8B%E6%9C%BA%E8%A6%81%E6%B1%82/" title="对下一部手机的需求"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">对下一部手机的需求</div></div><div class="info-2"><div class="info-item-1">2024-05-06日以后：一加 目前全家手机已经切换为一加。 到手即可解锁bootloader。 唯一缺点是，解锁后，无法使用指纹。    2024-05-06日以前：选择红米需要满足 可以刷机解锁bootloader，更新为tw或者eu的系统。 存储：256GB存储用于Syncthing的电影同步。 价格1500以下。  排除掉的 不要iPhone。 不要华为 不要不能解锁的。  </div></div></div></a><a class="pagination-related" href="/2022.07.20Ubuntu%E5%A4%B1%E8%81%94/" title="ubuntu server失联"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ubuntu server失联</div></div><div class="info-2"><div class="info-item-1">事情起因今天手动更新了下ubuntu server。卸载了桌面GUI，然后又安装了桌面GUI。结果server每隔20min就失联。 原因查找及解决找了很久原因，也让家里折腾来折腾去，帮忙激活server。最后终于找到了原因。参考链接：https://www.unixtutorial.org/disable-sleep-on-ubuntu-server/使用命令查了下是否是因为失眠导致： 1systemctl status sleep.target 结果果然是：	于是使用命令行关掉自动休眠就可以了： 1sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target 显示状态是masked就是已经关闭了自动休眠。 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-03</div><div class="info-item-2">编译OpenWRT</div></div><div class="info-2"><div class="info-item-1">编译步骤 进入待编译的目录  1cd /home/Disk/4Tsdd/  拉取源码  1git clone https://github.com/coolsnowwolf/lede  进入目录  1cd lede  增加插件  1sed -i &#x27;1i src-git kenzo https://github.com/kenzok8/openwrt-packages&#x27; feeds.conf.default  1sed -i &#x27;2i src-git small https://github.com/kenzok8/small&#x27; feeds.conf.default   更新及安装  1git pull &amp;&amp; ./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a  选择需要编译的内容  1make...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC1%E6%AC%A1%E7%BC%96%E8%AF%91"><span class="toc-text">第1次编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC2%E6%AC%A1%E7%BC%96%E8%AF%91"><span class="toc-text">第2次编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E7%94%A8%E7%9A%84%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">之前用的更新插件的命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%981-%E6%97%A0%E6%B3%95%E8%A6%86%E7%9B%96"><span class="toc-text">问题1 无法覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%982-%E7%BC%BA%E5%B0%91vssr%E7%9A%84%E4%BE%9D%E8%B5%96"><span class="toc-text">问题2 缺少vssr的依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%983-%E7%BC%BA%E5%B0%91dl%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-text">问题3 缺少dl文件夹内的文件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://wangweitung.tk/2022.01.17%E7%BC%96%E8%AF%91OpenWRT/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = '编译OpenWRT步骤'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

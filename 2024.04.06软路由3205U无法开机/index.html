@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>软路由3205U无法开机 | 记录我自己</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="软路由3205U无法开机背景目前是ikuai做主路由，然后添加虚拟机，安装openwrt。ikuai体检时提示内存需要大于4G。所以，为了升级现在的软路由3025U，买了个根8G的标压内存条。 到货安装8G内存条到了后，装上发现无法开机。以为是内存条有质量问题。所以没法使用。然后把内存条换到了群晖上。奇怪了，群晖可以开机。 问题排查把手里的几个内存条都拿出来：2G+2G+4G+4G+新买的8G。换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软路由3205U无法开机">
+<meta property="og:url" content="https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="软路由3205U无法开机背景目前是ikuai做主路由，然后添加虚拟机，安装openwrt。ikuai体检时提示内存需要大于4G。所以，为了升级现在的软路由3025U，买了个根8G的标压内存条。 到货安装8G内存条到了后，装上发现无法开机。以为是内存条有质量问题。所以没法使用。然后把内存条换到了群晖上。奇怪了，群晖可以开机。 问题排查把手里的几个内存条都拿出来：2G+2G+4G+4G+新买的8G。换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:published_time" content="2024-04-06T06:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-03T08:20:30.333Z">
+<meta property="article:author" content="wangweitung">
+<meta property="article:tag" content="3205U">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "软路由3205U无法开机",
+  "url": "https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/",
+  "image": "https://pic.wmch.tk:5/2025/05/25/avatar.jpg",
+  "datePublished": "2024-04-06T06:00:00.000Z",
+  "dateModified": "2025-06-03T08:20:30.333Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wangweitung",
+      "url": "https://wangweitung.tk/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软路由3205U无法开机',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a><a class="nav-page-title" href="/"><span class="site-name">软路由3205U无法开机</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">软路由3205U无法开机</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-06T06:00:00.000Z" title="发表于 2024-04-06 14:00:00">2024-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-03T08:20:30.333Z" title="更新于 2025-06-03 16:20:30">2025-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A1%AC%E4%BB%B6/%E8%BD%AF%E8%B7%AF%E7%94%B1/">软路由</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A1%AC%E4%BB%B6/%E8%BD%AF%E8%B7%AF%E7%94%B1/3205U/">3205U</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="软路由3205U无法开机"><a href="#软路由3205U无法开机" class="headerlink" title="软路由3205U无法开机"></a>软路由3205U无法开机</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>目前是ikuai做主路由，然后添加虚拟机，安装openwrt。<br>ikuai体检时提示内存需要大于4G。所以，为了升级现在的软路由3025U，买了个根8G的标压内存条。</p>
+<h3 id="到货安装"><a href="#到货安装" class="headerlink" title="到货安装"></a>到货安装</h3><p>8G内存条到了后，装上发现无法开机。以为是内存条有质量问题。所以没法使用。然后把内存条换到了群晖上。奇怪了，群晖可以开机。</p>
+<h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><p>把手里的几个内存条都拿出来：2G+2G+4G+4G+新买的8G。换着启动软路由，发现只有2G的可以点亮软路由。4G、8G都无法点亮。但这些4G、8G在群晖或者ubuntu上都已正常使用识别。</p>
+<ul>
+<li>怀疑是软路由主板及CPU不支持。<ul>
+<li><input checked="" disabled="" type="checkbox"> 询问了当时的淘宝卖家，排除了此可能。</li>
+</ul>
+</li>
+<li>那还能是什么原因呢？<ul>
+<li><input checked="" disabled="" type="checkbox"> 难道是电源有问题？</li>
+<li><input checked="" disabled="" type="checkbox"> 果然，置换了原装的电源后，就可以启动了。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果在另外的机器上测试OK，但本机测试有问题，大概率是其他的电源问题。 </p>
+<h3 id="当前的配置"><a href="#当前的配置" class="headerlink" title="当前的配置"></a>当前的配置</h3><p>软路由:3205U ikuai+OpenWRT</p>
+<table>
+<thead>
+<tr>
+<th align="center">设备</th>
+<th align="center">系统</th>
+<th align="center">硬件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">软路由</td>
+<td align="center">ikuai+OpenWRT</td>
+<td align="center">3205u+4G</td>
+</tr>
+<tr>
+<td align="center">群晖</td>
+<td align="center">黑群晖</td>
+<td align="center">J1900+8G</td>
+</tr>
+<tr>
+<td align="center">ubuntu</td>
+<td align="center">ubuntu20.04</td>
+<td align="center">J3455+16G</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangweitung.tk">wangweitung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/">https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangweitung.tk" target="_blank">记录我自己</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/3205U/">3205U</a></div><div class="post-share"><div class="social-share" data-image="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024.04.06%E4%BD%BF%E7%94%A8stackedit%E5%8F%91%E5%B8%83hexo/" title="使用stackedit发布hexo"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">使用stackedit发布hexo</div></div><div class="info-2"><div class="info-item-1">其实挺喜欢kodbox的md文件编辑器，可以编辑、预览同时展现，后来找了很久都没找到合适的编辑器，直到遇到了StackEdit。 docker部署StackEdit中文版地址 StackEdit中文版。 部署使用的docker compose文件如下： 123456789101112131415161718192021222324252627version: &quot;3.7&quot;services:  stackedit:    image: mafgwo/stackedit:【docker中央仓库找到最新版本】    container_name: stackedit    environment:      - LISTENING_PORT=8080      - ROOT_URL=/      - USER_BUCKET_NAME=root      - DROPBOX_APP_KEY=【不需要支持则删掉】      - DROPBOX_APP_KEY_FULL=【不需要支持则删掉】      - GITHUB_CLIENT_ID=【不需要支持则删掉】     ...</div></div></div></a><a class="pagination-related" href="/2024.04.07%E8%A7%A3%E5%86%B3Heimdall%E5%9C%A8nginx%E5%8F%8D%E4%BB%A3%E4%B8%8B%E9%A1%B5%E9%9D%A2%E5%87%BA%E9%94%99%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决Heimdall在nginx反代下页面出错的问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">解决Heimdall在nginx反代下页面出错的问题</div></div><div class="info-2"><div class="info-item-1">详细版我在unraid下安装了启动页Heimdall，通过nginx proxy manager进行反代后，通过域名访问页面会出问题，如图所示：  经我一个下午的摸鱼探索，终于找到了解决方法： 1. 找到heimdall的.env文件 通过各种方式（命令行、文件共享、winscp等都行），打开heimdall的config目录下的heimdall&#x2F;www&#x2F;.env文件。这个.env文件是隐藏文件，名字就是“.env”。我以我的unraid做例子，用winscp打开heimdall的www目录。我的目录是&#x2F;mnt&#x2F;user&#x2F;appdata&#x2F;heimdall&#x2F;www，具体目录地址以你们映射的为准。 2.修改.env文件  是http还是https要以你实际情况为准，我是SSL访问，写的是https。  如果你是端口映射，访问需要带端口号的话，地址后面还必须带上端口号。例如http://heimdall.yourdomain.com/:8888   3....</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA"><span class="toc-text">软路由3205U无法开机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E8%B4%A7%E5%AE%89%E8%A3%85"><span class="toc-text">到货安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-text">问题排查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">当前的配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://wangweitung.tk/2024.04.06%E8%BD%AF%E8%B7%AF%E7%94%B13205U%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = '软路由3205U无法开机'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

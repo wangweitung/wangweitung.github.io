@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>标签 | 记录我自己</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="如何才能不荒废后面这半生！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="标签">
+<meta property="og:url" content="https://wangweitung.tk/tags/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="如何才能不荒废后面这半生！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:published_time" content="2024-01-18T06:15:08.000Z">
+<meta property="article:modified_time" content="2025-06-03T08:20:30.335Z">
+<meta property="article:author" content="wangweitung">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '标签',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="page type-tags" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">标签</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list text-center"><a href="/tags/OpenWRT/" style="font-size: 1.5em; color: rgb(164, 155, 78);">OpenWRT</a><a href="/tags/Simulation/" style="font-size: 1.43em; color: rgb(50, 106, 50);">Simulation</a><a href="/tags/hexo/" style="font-size: 1.5em; color: rgb(117, 50, 77);">hexo</a><a href="/tags/AGV/" style="font-size: 1.2em; color: rgb(56, 115, 50);">AGV</a><a href="/tags/transferstation/" style="font-size: 1.2em; color: rgb(54, 78, 130);">transferstation</a><a href="/tags/WordPress/" style="font-size: 1.2em; color: rgb(50, 74, 141);">WordPress</a><a href="/tags/V2rayNG/" style="font-size: 1.2em; color: rgb(50, 61, 111);">V2rayNG</a><a href="/tags/%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F/" style="font-size: 1.2em; color: rgb(87, 165, 112);">生产模式</a><a href="/tags/cad/" style="font-size: 1.2em; color: rgb(50, 50, 50);">cad</a><a href="/tags/ubuntu/" style="font-size: 1.43em; color: rgb(94, 194, 50);">ubuntu</a><a href="/tags/h5ai/" style="font-size: 1.2em; color: rgb(95, 150, 50);">h5ai</a><a href="/tags/NAS/" style="font-size: 1.2em; color: rgb(65, 50, 129);">NAS</a><a href="/tags/Ubuntu/" style="font-size: 1.2em; color: rgb(169, 123, 189);">Ubuntu</a><a href="/tags/lychee/" style="font-size: 1.2em; color: rgb(137, 158, 161);">lychee</a><a href="/tags/hosts/" style="font-size: 1.2em; color: rgb(50, 52, 66);">hosts</a><a href="/tags/Transmission/" style="font-size: 1.2em; color: rgb(76, 50, 76);">Transmission</a><a href="/tags/Jellyfin/" style="font-size: 1.2em; color: rgb(151, 133, 123);">Jellyfin</a><a href="/tags/Picgo/" style="font-size: 1.2em; color: rgb(122, 50, 109);">Picgo</a><a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.2em; color: rgb(179, 189, 118);">网络</a><a href="/tags/%E7%A9%BA%E6%A0%BC/" style="font-size: 1.2em; color: rgb(91, 50, 90);">空格</a><a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4/" style="font-size: 1.2em; color: rgb(188, 166, 153);">摄像头</a><a href="/tags/%E5%9B%9E%E6%94%B6/" style="font-size: 1.2em; color: rgb(136, 50, 185);">回收</a><a href="/tags/%E6%BF%80%E6%B4%BB/" style="font-size: 1.2em; color: rgb(83, 50, 185);">激活</a><a href="/tags/Mind/" style="font-size: 1.2em; color: rgb(92, 50, 50);">Mind</a><a href="/tags/Manager/" style="font-size: 1.2em; color: rgb(67, 74, 59);">Manager</a><a href="/tags/%E6%89%8B%E6%9C%BA/" style="font-size: 1.35em; color: rgb(50, 71, 70);">手机</a><a href="/tags/%E6%92%AD%E6%94%BE%E5%99%A8/" style="font-size: 1.2em; color: rgb(50, 168, 163);">播放器</a><a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.27em; color: rgb(66, 50, 118);">备份</a><a href="/tags/Screen/" style="font-size: 1.2em; color: rgb(154, 54, 75);">Screen</a><a href="/tags/Zerotier/" style="font-size: 1.2em; color: rgb(121, 50, 50);">Zerotier</a><a href="/tags/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86/" style="font-size: 1.2em; color: rgb(50, 50, 148);">视频采集</a><a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.2em; color: rgb(148, 198, 50);">问题</a><a href="/tags/%E9%94%81%E5%AE%9A/" style="font-size: 1.2em; color: rgb(63, 85, 59);">锁定</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.2em; color: rgb(101, 50, 158);">博客</a><a href="/tags/%E7%9B%B8%E5%86%8C/" style="font-size: 1.2em; color: rgb(114, 187, 198);">相册</a><a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 1.27em; color: rgb(79, 117, 165);">宝塔</a><a href="/tags/Markdown/" style="font-size: 1.2em; color: rgb(70, 126, 114);">Markdown</a><a href="/tags/Github/" style="font-size: 1.2em; color: rgb(50, 185, 189);">Github</a><a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.27em; color: rgb(167, 50, 50);">编译</a><a href="/tags/%E6%96%AD%E7%BD%91/" style="font-size: 1.27em; color: rgb(50, 195, 191);">断网</a><a href="/tags/%E5%A4%B1%E8%81%94/" style="font-size: 1.27em; color: rgb(50, 87, 142);">失联</a><a href="/tags/WireGuard/" style="font-size: 1.27em; color: rgb(150, 50, 71);">WireGuard</a><a href="/tags/Docker/" style="font-size: 1.2em; color: rgb(78, 155, 50);">Docker</a><a href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" style="font-size: 1.2em; color: rgb(86, 121, 50);">自动更新</a><a href="/tags/Beancount/" style="font-size: 1.2em; color: rgb(65, 50, 108);">Beancount</a><a href="/tags/%E8%AE%BE%E7%BD%AE/" style="font-size: 1.2em; color: rgb(98, 57, 50);">设置</a><a href="/tags/odoo/" style="font-size: 1.27em; color: rgb(94, 124, 188);">odoo</a><a href="/tags/%E6%81%A2%E5%A4%8D/" style="font-size: 1.2em; color: rgb(140, 174, 57);">恢复</a><a href="/tags/%E8%AF%84%E8%AE%BA/" style="font-size: 1.2em; color: rgb(98, 50, 95);">评论</a><a href="/tags/Waline/" style="font-size: 1.2em; color: rgb(153, 115, 95);">Waline</a><a href="/tags/AdGuardHome/" style="font-size: 1.2em; color: rgb(145, 78, 50);">AdGuardHome</a><a href="/tags/Obsidian/" style="font-size: 1.35em; color: rgb(133, 127, 134);">Obsidian</a><a href="/tags/%E5%86%B2%E7%AA%81/" style="font-size: 1.2em; color: rgb(58, 147, 149);">冲突</a><a href="/tags/%E5%AD%97%E4%BD%93/" style="font-size: 1.27em; color: rgb(50, 164, 195);">字体</a><a href="/tags/%E6%80%9D%E8%80%83/" style="font-size: 1.2em; color: rgb(147, 124, 130);">思考</a><a href="/tags/ikuai/" style="font-size: 1.35em; color: rgb(67, 100, 120);">ikuai</a><a href="/tags/kodbox/" style="font-size: 1.2em; color: rgb(50, 117, 183);">kodbox</a><a href="/tags/%E8%B7%83%E7%82%B9/" style="font-size: 1.2em; color: rgb(50, 174, 166);">跃点</a><a href="/tags/stackedit/" style="font-size: 1.2em; color: rgb(105, 50, 113);">stackedit</a><a href="/tags/3205U/" style="font-size: 1.2em; color: rgb(149, 80, 114);">3205U</a><a href="/tags/immich/" style="font-size: 1.2em; color: rgb(114, 155, 50);">immich</a><a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 1.27em; color: rgb(145, 97, 106);">代理</a><a href="/tags/%E9%BB%91%E7%BE%A4%E6%99%96/" style="font-size: 1.2em; color: rgb(165, 50, 108);">黑群晖</a><a href="/tags/PTPP/" style="font-size: 1.2em; color: rgb(50, 71, 113);">PTPP</a><a href="/tags/ERP/" style="font-size: 1.2em; color: rgb(171, 108, 189);">ERP</a><a href="/tags/compsose/" style="font-size: 1.2em; color: rgb(108, 104, 91);">compsose</a><a href="/tags/heimdall/" style="font-size: 1.2em; color: rgb(168, 88, 50);">heimdall</a><a href="/tags/ResilioSync/" style="font-size: 1.2em; color: rgb(60, 93, 138);">ResilioSync</a><a href="/tags/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/" style="font-size: 1.2em; color: rgb(171, 153, 181);">百度网盘</a><a href="/tags/memos/" style="font-size: 1.2em; color: rgb(153, 184, 116);">memos</a><a href="/tags/airconnect/" style="font-size: 1.2em; color: rgb(69, 131, 50);">airconnect</a><a href="/tags/alist/" style="font-size: 1.2em; color: rgb(55, 93, 50);">alist</a><a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6/" style="font-size: 1.2em; color: rgb(50, 54, 160);">电子书</a><a href="/tags/home-asisstant/" style="font-size: 1.27em; color: rgb(50, 50, 164);">home-asisstant</a><a href="/tags/qbittorrent/" style="font-size: 1.2em; color: rgb(50, 193, 196);">qbittorrent</a><a href="/tags/Portainer/" style="font-size: 1.35em; color: rgb(50, 50, 151);">Portainer</a><a href="/tags/%E7%94%B5%E6%B1%A0/" style="font-size: 1.2em; color: rgb(50, 50, 50);">电池</a><a href="/tags/tailscale/" style="font-size: 1.2em; color: rgb(68, 59, 57);">tailscale</a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.2em; color: rgb(50, 106, 144);">生活</a><a href="/tags/ETC/" style="font-size: 1.2em; color: rgb(50, 72, 50);">ETC</a><a href="/tags/PVE/" style="font-size: 1.2em; color: rgb(90, 109, 104);">PVE</a><a href="/tags/%E6%AD%BB%E4%BA%A1/" style="font-size: 1.2em; color: rgb(65, 186, 55);">死亡</a><a href="/tags/%E5%85%BB%E8%80%81/" style="font-size: 1.2em; color: rgb(102, 146, 50);">#养老</a><a href="/tags/%E8%BF%9B%E5%8F%A3%E8%8D%AF/" style="font-size: 1.2em; color: rgb(50, 81, 177);">进口药</a><a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 1.2em; color: rgb(135, 136, 59);">音乐</a><a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 1.2em; color: rgb(159, 50, 173);">群晖</a><a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 1.2em; color: rgb(50, 50, 174);">打包</a></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/"><span class="card-category-list-name">Plant Simulation</span><span class="card-category-list-count">8</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/SimTalk/"><span class="card-category-list-name">SimTalk</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E4%BB%A3%E7%A0%81/"><span class="card-category-list-name">代码</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%AE%9E%E4%BD%93/"><span class="card-category-list-name">实体</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/"><span class="card-category-list-name">常用代码</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/"><span class="card-category-list-name">常规操作</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E6%A8%A1%E5%9E%8B/"><span class="card-category-list-name">模型</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E8%83%8C%E6%99%AF/"><span class="card-category-list-name">背景</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/WireGuard/" style="font-size: 1.23em; color: #999ea6">WireGuard</a> <a href="/tags/%E6%BF%80%E6%B4%BB/" style="font-size: 1.1em; color: #999">激活</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.23em; color: #999ea6">备份</a> <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4/" style="font-size: 1.1em; color: #999">摄像头</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">问题</a> <a href="/tags/ResilioSync/" style="font-size: 1.1em; color: #999">ResilioSync</a> <a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6/" style="font-size: 1.1em; color: #999">电子书</a> <a href="/tags/transferstation/" style="font-size: 1.1em; color: #999">transferstation</a> <a href="/tags/Screen/" style="font-size: 1.1em; color: #999">Screen</a> <a href="/tags/Markdown/" style="font-size: 1.1em; color: #999">Markdown</a> <a href="/tags/OpenWRT/" style="font-size: 1.5em; color: #99a9bf">OpenWRT</a> <a href="/tags/%E5%A4%B1%E8%81%94/" style="font-size: 1.23em; color: #999ea6">失联</a> <a href="/tags/%E9%94%81%E5%AE%9A/" style="font-size: 1.1em; color: #999">锁定</a> <a href="/tags/WordPress/" style="font-size: 1.1em; color: #999">WordPress</a> <a href="/tags/Picgo/" style="font-size: 1.1em; color: #999">Picgo</a> <a href="/tags/3205U/" style="font-size: 1.1em; color: #999">3205U</a> <a href="/tags/PTPP/" style="font-size: 1.1em; color: #999">PTPP</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" style="font-size: 1.1em; color: #999">自动更新</a> <a href="/tags/%E5%85%BB%E8%80%81/" style="font-size: 1.1em; color: #999">#养老</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.1em; color: #999">生活</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 1.1em; color: #999">群晖</a> <a href="/tags/h5ai/" style="font-size: 1.1em; color: #999">h5ai</a> <a href="/tags/%E7%A9%BA%E6%A0%BC/" style="font-size: 1.1em; color: #999">空格</a> <a href="/tags/%E8%BF%9B%E5%8F%A3%E8%8D%AF/" style="font-size: 1.1em; color: #999">进口药</a> <a href="/tags/stackedit/" style="font-size: 1.1em; color: #999">stackedit</a> <a href="/tags/home-asisstant/" style="font-size: 1.23em; color: #999ea6">home-asisstant</a> <a href="/tags/%E8%AE%BE%E7%BD%AE/" style="font-size: 1.1em; color: #999">设置</a> <a href="/tags/%E7%9B%B8%E5%86%8C/" style="font-size: 1.1em; color: #999">相册</a> <a href="/tags/V2rayNG/" style="font-size: 1.1em; color: #999">V2rayNG</a> <a href="/tags/ubuntu/" style="font-size: 1.37em; color: #99a4b2">ubuntu</a> <a href="/tags/Zerotier/" style="font-size: 1.1em; color: #999">Zerotier</a> <a href="/tags/ERP/" style="font-size: 1.1em; color: #999">ERP</a> <a href="/tags/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/" style="font-size: 1.1em; color: #999">百度网盘</a> <a href="/tags/%E8%AF%84%E8%AE%BA/" style="font-size: 1.1em; color: #999">评论</a> <a href="/tags/tailscale/" style="font-size: 1.1em; color: #999">tailscale</a> <a href="/tags/%E6%81%A2%E5%A4%8D/" style="font-size: 1.1em; color: #999">恢复</a> <a href="/tags/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86/" style="font-size: 1.1em; color: #999">视频采集</a> <a href="/tags/%E6%AD%BB%E4%BA%A1/" style="font-size: 1.1em; color: #999">死亡</a> <a href="/tags/Beancount/" style="font-size: 1.1em; color: #999">Beancount</a> <a href="/tags/immich/" style="font-size: 1.1em; color: #999">immich</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/04/">
+            <span class="card-archive-list-date">
+              四月 2024
+            </span>
+            <span class="card-archive-list-count">26</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/11/">
+            <span class="card-archive-list-date">
+              十一月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">103</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-06-03T08:20:47.581Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/tags/index.html'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://wangweitung.tk/tags/index.html'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = '标签'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

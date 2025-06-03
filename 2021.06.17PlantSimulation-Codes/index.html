@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Plant Simulation 常用的代码 | 记录我自己</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="plant simulation 常用的代码清空控制台1clearConsole  统计故障时间12if ?.failed 修复时间统计[1,修复时间统计.ydim+1]:&#x3D;?.getDisruptionendtime-eventController.simTime	end 查找表格的内容123456var m,n :integer    if 数据表.find(&quot;wwd&quot;)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Plant Simulation 常用的代码">
+<meta property="og:url" content="https://wangweitung.tk/2021.06.17PlantSimulation-Codes/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="plant simulation 常用的代码清空控制台1clearConsole  统计故障时间12if ?.failed 修复时间统计[1,修复时间统计.ydim+1]:&#x3D;?.getDisruptionendtime-eventController.simTime	end 查找表格的内容123456var m,n :integer    if 数据表.find(&quot;wwd&quot;)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:published_time" content="2021-06-17T10:24:29.000Z">
+<meta property="article:modified_time" content="2025-06-03T08:20:30.330Z">
+<meta property="article:author" content="wangweitung">
+<meta property="article:tag" content="Simulation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Plant Simulation 常用的代码",
+  "url": "https://wangweitung.tk/2021.06.17PlantSimulation-Codes/",
+  "image": "https://pic.wmch.tk:5/2025/05/25/avatar.jpg",
+  "datePublished": "2021-06-17T10:24:29.000Z",
+  "dateModified": "2025-06-03T08:20:30.330Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "wangweitung",
+      "url": "https://wangweitung.tk/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/2021.06.17PlantSimulation-Codes/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Plant Simulation 常用的代码',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a><a class="nav-page-title" href="/"><span class="site-name">Plant Simulation 常用的代码</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Plant Simulation 常用的代码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-17T10:24:29.000Z" title="发表于 2021-06-17 18:24:29">2021-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-03T08:20:30.330Z" title="更新于 2025-06-03 16:20:30">2025-06-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Plant-Simulation/%E4%BB%A3%E7%A0%81/">代码</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="plant-simulation-常用的代码"><a href="#plant-simulation-常用的代码" class="headerlink" title="plant simulation 常用的代码"></a>plant simulation 常用的代码</h1><h2 id="清空控制台"><a href="#清空控制台" class="headerlink" title="清空控制台"></a>清空控制台</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clearConsole</span><br></pre></td></tr></table></figure>
+
+<h2 id="统计故障时间"><a href="#统计故障时间" class="headerlink" title="统计故障时间"></a>统计故障时间</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ?.failed 修复时间统计[1,修复时间统计.ydim+1]:=?.getDisruptionendtime-eventController.simTime	</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="查找表格的内容"><a href="#查找表格的内容" class="headerlink" title="查找表格的内容"></a>查找表格的内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var m,n :integer</span><br><span class="line">    if 数据表.find(&quot;wwd&quot;)</span><br><span class="line">    	n := 数据表.cursorx</span><br><span class="line">    	m := 数据表.cursory</span><br><span class="line">    	print n,m</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+
+<h2 id="打印受限制的元素个数"><a href="#打印受限制的元素个数" class="headerlink" title="打印受限制的元素个数"></a>打印受限制的元素个数</h2><p>新建Method，写入如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print numOfLimitedObjects</span><br></pre></td></tr></table></figure>
+
+<h2 id="定义一维数组并打印"><a href="#定义一维数组并打印" class="headerlink" title="定义一维数组并打印"></a>定义一维数组并打印</h2><p>案例一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clearconsole			--清空控制台</span><br><span class="line">    var arry : integer[3]	--定义数组为整形，3个元素</span><br><span class="line">    var i : integer			--定义循环变量</span><br><span class="line">    i := 1					</span><br><span class="line">    arry[1] := 10			--对数组进行赋值</span><br><span class="line">    arry[2] := 101</span><br><span class="line">    arry[3] := 103</span><br><span class="line">    for i := 1 to 3			--循环打印数组元素</span><br><span class="line">    	print arry [i]</span><br><span class="line">    next</span><br></pre></td></tr></table></figure>
+
+<p>案例二</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clearconsole			--清空控制台</span><br><span class="line">    var i : integer			--定义循环变量</span><br><span class="line">    var arry : integer[]	--定义数组为整形，元素数留空</span><br><span class="line">    --定义一维数组元素</span><br><span class="line">    arry := makearray(1,2,3,1,3,13)</span><br><span class="line">    for i := 1 to 6			--打印数组元素</span><br><span class="line">    	print arry [i]</span><br><span class="line">    next</span><br></pre></td></tr></table></figure>
+
+<h2 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clearconsole			--清空控制台</span><br><span class="line">    var arry :integer[2,2]	--定义4个整数元素的数组</span><br><span class="line">    --给元素赋值</span><br><span class="line">    arry[1,1] := 3</span><br><span class="line">    arry[1,2] := 4</span><br><span class="line">    arry[2,1] := 5</span><br><span class="line">    arry[2,2] := 6</span><br><span class="line">    print arry[2,1]			--打印数组</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用嵌套循环打印二维数组所有元素"><a href="#使用嵌套循环打印二维数组所有元素" class="headerlink" title="使用嵌套循环打印二维数组所有元素"></a>使用嵌套循环打印二维数组所有元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">clearconsole				--清空控制台</span><br><span class="line">    var arry :integer[2,2]		--定义4个整数元素的数组</span><br><span class="line">	--给元素赋值   </span><br><span class="line">    arry[1,1] := 3</span><br><span class="line">    arry[1,2] := 4</span><br><span class="line">    arry[2,1] := 5</span><br><span class="line">    arry[2,2] := 6</span><br><span class="line">    --定义内外层的循环变量，遍历打印数组所有元素</span><br><span class="line">    var j: integer := 1</span><br><span class="line">    var i: integer := 1</span><br><span class="line">    for j := 1 to 2</span><br><span class="line">    	for i := 1 to 2</span><br><span class="line">    		print arry[i,j]</span><br><span class="line">    	next</span><br><span class="line">    	print &quot;-&quot;</span><br><span class="line">    next</span><br></pre></td></tr></table></figure>
+
+<h2 id="switch-case的用法"><a href="#switch-case的用法" class="headerlink" title="switch case的用法"></a>switch case的用法</h2><p>注意：simtalk 2.0 已经弃用了inspect .. when ..的句法，<br>旧的用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">is</span><br><span class="line">    num:integer;</span><br><span class="line">do</span><br><span class="line">    num:=2;</span><br><span class="line">      inspect num</span><br><span class="line">        when 1 then print &quot;Num is 1.&quot;; </span><br><span class="line">        when 2 then print &quot;Num is 2.&quot;; </span><br><span class="line">        when 3 then print &quot;Num is 3.&quot;; </span><br><span class="line">    -- and so on</span><br><span class="line">    else</span><br><span class="line">      print &quot;Not 1, not 2, not 3 !&quot;; </span><br><span class="line">      end;</span><br><span class="line">    end;</span><br></pre></td></tr></table></figure>
+<p>新的用法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var n : integer := 1</span><br><span class="line">    switch n</span><br><span class="line">    case 1 </span><br><span class="line">    	 print &quot;num is 1&quot;</span><br><span class="line">    case 2</span><br><span class="line">    	 print &quot;num is 2&quot;</span><br><span class="line">    case 3</span><br><span class="line">    	 print &quot;num is 3&quot;</span><br><span class="line">    else</span><br><span class="line">    	print &quot;no num&quot;</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var i : integer := 1</span><br><span class="line">    while i &lt; 10</span><br><span class="line">    	i := i +1</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    print i</span><br></pre></td></tr></table></figure>
+
+<h2 id="repeat循环"><a href="#repeat循环" class="headerlink" title="repeat循环"></a>repeat循环</h2><p>类似于c语言的 do..while..循环</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var i : integer</span><br><span class="line">    i:= 10</span><br><span class="line">    repeat </span><br><span class="line">    	i := i +1</span><br><span class="line">    	print i</span><br><span class="line">    until i &gt; 20</span><br><span class="line">    </span><br><span class="line">    print i</span><br></pre></td></tr></table></figure>
+
+<h2 id="For循环"><a href="#For循环" class="headerlink" title="For循环"></a>For循环</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var i : integer</span><br><span class="line">     i := 1</span><br><span class="line">    for i := 1 to 100</span><br><span class="line">    	print i</span><br><span class="line">    next</span><br></pre></td></tr></table></figure>
+
+<h2 id="Plant-Simulation里输入数据"><a href="#Plant-Simulation里输入数据" class="headerlink" title="Plant Simulation里输入数据"></a>Plant Simulation里输入数据</h2><p>使用prompt功能</p>
+<p>The function prompt asks the user to enter data. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- method for querying the number of pallets in a model </span><br><span class="line">-&gt; integer</span><br><span class="line">var s: string</span><br><span class="line">-- gets the number of pallets</span><br><span class="line">s := prompt(&quot;Enter number&quot;, &quot;of pallets&quot;)</span><br><span class="line">return str_to_num(s) </span><br></pre></td></tr></table></figure>
+
+<p>举例：使用用户输入的值来计算圆的周长</p>
+<p>用户输入半径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-&gt;integer		--定义需要的返回值是整形</span><br><span class="line">var s :string  	--输入值是一个字符串类型，所以需要定义一个字符串型的变量</span><br><span class="line">s:= prompt(&quot;请输入圆的半径&quot;)--用户输入</span><br><span class="line">return str_to_num(s)		--将输入的值返回，并且转换为数字类型</span><br></pre></td></tr></table></figure>
+
+<p>计算面积的方法<br>–定义一个计算园面积的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var r :integer</span><br><span class="line">var L :integer</span><br><span class="line">r := 数据输入</span><br><span class="line">L := r * pi</span><br><span class="line">print L</span><br></pre></td></tr></table></figure>
+<p>以上需要两个方法来实现计算。以下可以在一个方法内实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var l : real</span><br><span class="line">var m : real</span><br><span class="line">var s : real</span><br><span class="line">var s1 :string</span><br><span class="line">var s2 :string</span><br><span class="line"></span><br><span class="line">s1 := prompt(&quot;请输入长方形的长：&quot;)</span><br><span class="line">l := str_to_num(s1)</span><br><span class="line">s2 := prompt(&quot;请输入长方形的宽：&quot;)</span><br><span class="line">m := str_to_num(s2)</span><br><span class="line">s := l*m</span><br><span class="line">print s</span><br></pre></td></tr></table></figure>
+
+<h2 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h2><p>传递的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">param m , n :integer -&gt; integer</span><br><span class="line">if m &gt; n</span><br><span class="line">	return m</span><br><span class="line">else </span><br><span class="line">	return n</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>返回原程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s : integer</span><br><span class="line">s := 比较大小(10,20)</span><br><span class="line">print s</span><br></pre></td></tr></table></figure>
+
+<h2 id="传递1个参数"><a href="#传递1个参数" class="headerlink" title="传递1个参数"></a>传递1个参数</h2><p>程序1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var L : integer</span><br><span class="line">L := 周长函数(125)</span><br><span class="line">print L</span><br></pre></td></tr></table></figure>
+<p>程序2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">param n : integer -&gt; real</span><br><span class="line">result := 2 * pi * n</span><br><span class="line">return</span><br></pre></td></tr></table></figure>
+
+<h2 id="waituntil-和-stopuntil"><a href="#waituntil-和-stopuntil" class="headerlink" title="waituntil 和 stopuntil"></a>waituntil 和 stopuntil</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">waituntil condition [prio number] [wait timespan:time]</span><br><span class="line">stopuntil condition [prio number] [wait timespan:time]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">prio number 中的number越大，优先度越高</span><br><span class="line">三个方法分别写入以下方法：</span><br><span class="line"></span><br><span class="line">waituntil 缓冲区.empty prio 1</span><br><span class="line">@.move(缓冲区)</span><br><span class="line"></span><br><span class="line">waituntil 缓冲区.empty prio 2</span><br><span class="line">@.move(缓冲区)</span><br><span class="line"></span><br><span class="line">waituntil 缓冲区.empty prio 3</span><br><span class="line">@.move(缓冲区)</span><br><span class="line"></span><br><span class="line">其中prio 3的级别是最高的。一直等到缓冲区空，才会移动，所以每次缓冲区只有1个零件。</span><br><span class="line"></span><br><span class="line">stopuntil 缓冲区.empty prio 1</span><br><span class="line">@.move(缓冲区)</span><br><span class="line"></span><br><span class="line">stopuntil 缓冲区.empty prio 2</span><br><span class="line">@.move(缓冲区)</span><br><span class="line"></span><br><span class="line">stopuntil 缓冲区.empty prio 3</span><br><span class="line">@.move(缓冲区)</span><br></pre></td></tr></table></figure>
+
+
+<p>　　其中prio 3的级别是最高的。一直停止到缓冲区空，所以缓冲区会有<br><img src="https://i.imgur.com/NjMGeYP.png"><br><img src="https://i.imgur.com/wMIjXUR.png"></p>
+<p>#设定设备或者工位的定期保养策略</p>
+<p>打开工位或者机器人，在故障里新增Failure，填写如下，<br>如果故障持续时间duration为0，则表示没有故障。如果不填写间隔，则表示只出现一次故障。</p>
+<blockquote>
+<ol>
+<li>开始start：即仿真开始多久后开始故障。</li>
+<li>间隔duration：每间隔多久发生故障。</li>
+<li>持续时间interval：故障的持续时间，即维护时间。</li>
+<li>下图即为每1000h的工作时间，保养3h。</li>
+</ol>
+</blockquote>
+<p><img src="https://i.imgur.com/yRGL4TE.png"><br><img src="https://i.imgur.com/3pgRroc.png"></p>
+<p>故障时间选择：</p>
+<blockquote>
+<ol>
+<li>仿真时间simulation time：与系统的仿真时间有关，而与其他，如工作站的作业时间无关。</li>
+<li>操作时间operating  time：For this setting,Plant Simulation consumes the time you have entered as the interval, if the object is not paused (working or waiting).</li>
+<li>处理时间processing time：For this setting, Plant Simulation consumes the time you have entered as the interval while the object is working (not paused, waiting, or unplanned).</li>
+</ol>
+</blockquote>
+<p><img src="https://i.imgur.com/EAIngDa.png"></p>
+<p>还可以通过设置多个Failure的参数来使模型更加的贴近生产。</p>
+<ol>
+<li>设置TMP（Total Productive Maintenance的缩略语，中文译名叫全员生产维护，又译为全员生产保全）为每周保养1次，1次2H.<br><img src="https://i.imgur.com/yRGL4TE.png"></li>
+<li>工装更换时间，每3H，更换一次工装，耗时20min。<br><img src="https://i.imgur.com/WBxjctv.png"></li>
+<li>随机故障，按照RO，95%，故障修复时间10min.<br><img src="https://i.imgur.com/hzttrQw.png"></li>
+</ol>
+<h2 id="如何设置缓冲区的大小？需要学习"><a href="#如何设置缓冲区的大小？需要学习" class="headerlink" title="如何设置缓冲区的大小？需要学习"></a>如何设置缓冲区的大小？需要学习</h2><h2 id="重置数据表的命令"><a href="#重置数据表的命令" class="headerlink" title="重置数据表的命令"></a>重置数据表的命令</h2><h2 id="移动零件至传送带指定位置"><a href="#移动零件至传送带指定位置" class="headerlink" title="移动零件至传送带指定位置"></a>移动零件至传送带指定位置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@.move(传送器11,3)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="删除表中的主数据"><a href="#删除表中的主数据" class="headerlink" title="删除表中的主数据"></a>删除表中的主数据</h2><p>　　此命令为删除表中的数据，而非删除表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table.delete</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="transfer-station的用法"><a href="#transfer-station的用法" class="headerlink" title="transfer station的用法"></a>transfer station的用法</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangweitung.tk">wangweitung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangweitung.tk/2021.06.17PlantSimulation-Codes/">https://wangweitung.tk/2021.06.17PlantSimulation-Codes/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangweitung.tk" target="_blank">记录我自己</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Simulation/">Simulation</a></div><div class="post-share"><div class="social-share" data-image="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2021.06.13WordPress%E5%8E%9F%E5%8D%9A%E6%96%87%E5%A4%87%E4%BB%BD%E4%BD%8D%E7%BD%AE/" title="WordPress原博文备份位置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">WordPress原博文备份位置</div></div><div class="info-2"><div class="info-item-1">WordPress备份位置数据库位置： 1/home/Disk/J1900/web/database 文件位置 1/home/Disk/J1900/web/site/ +谷歌硬盘 原Markdown的备份位置1/home/Disk/J1900/web/path/ </div></div></div></a><a class="pagination-related" href="/2021.06.20%E5%AE%89%E8%A3%85Screen/" title="在Ubuntu上使用Screen"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">在Ubuntu上使用Screen</div></div><div class="info-2"><div class="info-item-1">1、安装Screen1apt-get install screen 2、开启新的任务1screen -S name 比如我为了电脑端离线编译lede使用以下命令： 1screen -S lede 然后进入目录： 1cd /home/Disk/2Tsda/app/lede 开始编译： 1make -j5 V=s  1make -j1 V=s 3、分离会话通过快键键Ctrl+a+d实现分离。　　 4、恢复会话窗口查看当前任务： 1screen -ls 　　 5、返回会话：1screen -r lede 或 screen -r 12574 6、杀死会话杀死会话窗口通过命令 1kill -9 threadnum 注意此处只能通过id号来杀死窗口。 7、清除死去窗口通过命令： 1screen -wipe 这个命令将自动清除所有处于dead状态的窗口 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2020.03.22Codes-in-PlantSimulation/" title="Plant Simulation常用代码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-22</div><div class="info-item-2">Plant Simulation常用代码</div></div><div class="info-2"><div class="info-item-1">PlantSimulation常用代码1、清空控制台1clearConsole  2、统计故障时间123if ?.failed    修复时间统计[1,修复时间统计.ydim+1]	:=?.getDisruptionendtime-eventController.simTimeend  </div></div></div></a><a class="pagination-related" href="/2020.05.04How-to-Use-PlantSimulation/" title="PlantSimulation常规操作"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-04</div><div class="info-item-2">PlantSimulation常规操作</div></div><div class="info-2"><div class="info-item-1">PlantSimulation常规操作1、检查模型中是否有未连接的实体。　　点击：常规-不相连对象，如果未相连，会有选中提示。  2、旋转实体的快捷键 1Ctrl+T </div></div></div></a><a class="pagination-related" href="/2020.05.04How-to-use-Move/" title="Move的用法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-04</div><div class="info-item-2">Move的用法</div></div><div class="info-2"><div class="info-item-1">Move的用法1、从传送带移动到传送带上。在传送带上创建传感器，创建一个Method，使用Method来控制传送带上的物料移动。 1@.move（传送带1）  如果需要移动到传送带上某一个位置，如3m位置。 1@.move（传送带1,3）   </div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#plant-simulation-%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">plant simulation 常用的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%A9%BA%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-text">清空控制台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%95%85%E9%9A%9C%E6%97%B6%E9%97%B4"><span class="toc-text">统计故障时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">查找表格的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E5%8F%97%E9%99%90%E5%88%B6%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0"><span class="toc-text">打印受限制的元素个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%B9%B6%E6%89%93%E5%8D%B0"><span class="toc-text">定义一维数组并打印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">定义二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF%E6%89%93%E5%8D%B0%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0"><span class="toc-text">使用嵌套循环打印二维数组所有元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch-case%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">switch case的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#repeat%E5%BE%AA%E7%8E%AF"><span class="toc-text">repeat循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#For%E5%BE%AA%E7%8E%AF"><span class="toc-text">For循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plant-Simulation%E9%87%8C%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-text">Plant Simulation里输入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E9%80%92%E4%B8%A4%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="toc-text">传递两个参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E9%80%921%E4%B8%AA%E5%8F%82%E6%95%B0"><span class="toc-text">传递1个参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#waituntil-%E5%92%8C-stopuntil"><span class="toc-text">waituntil 和 stopuntil</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%9F%E9%9C%80%E8%A6%81%E5%AD%A6%E4%B9%A0"><span class="toc-text">如何设置缓冲区的大小？需要学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-text">重置数据表的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E9%9B%B6%E4%BB%B6%E8%87%B3%E4%BC%A0%E9%80%81%E5%B8%A6%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE"><span class="toc-text">移动零件至传送带指定位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%B8%BB%E6%95%B0%E6%8D%AE"><span class="toc-text">删除表中的主数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transfer-station%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">transfer station的用法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/2021.06.17PlantSimulation-Codes/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://wangweitung.tk/2021.06.17PlantSimulation-Codes/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = 'Plant Simulation 常用的代码'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>记录我自己 - 在这个世界，努力的生活！</title><meta name="author" content="wangweitung"><meta name="copyright" content="wangweitung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="如何才能不荒废后面这半生！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="记录我自己">
+<meta property="og:url" content="https://wangweitung.tk/page/5/index.html">
+<meta property="og:site_name" content="记录我自己">
+<meta property="og:description" content="如何才能不荒废后面这半生！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg">
+<meta property="article:author" content="wangweitung">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.wmch.tk:5/2025/05/25/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wangweitung.tk/page/5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记录我自己',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://pic.wmch.tk:5/2025/05/28/network-wallpaper.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">记录我自己</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://wangweitung.github.io/running_page/"><i class="fa-fw fas fa-running"></i><span> 跑步记录</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">记录我自己</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.10.07%E4%B8%8D%E4%BD%BF%E7%94%A8docker%E5%9C%A8ubuntu%E5%AE%89%E8%A3%85Jellyfin/" title="不使用docker在ubuntu安装Jellyfin">不使用docker在ubuntu安装Jellyfin</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-07T14:16:33.000Z" title="发表于 2020-10-07 22:16:33">2020-10-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/">Docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/Jellyfin/">Jellyfin</a></span></div><div class="content">2024.04.08 已经修改为emby compose文件123456789101112131415161718192021222324version: &quot;3&quot;services:    emby-normal:        network_mode: bridge        ports:            - 8096:8096            - 8919:8920            - 1901:1900/udp            - 7360:7359/udp        volumes:            - ./config:/config            - /home/Disk:/data        environment:            - TZ=Asia/Shanghai            - UID=0            - GID=0            - GIDLIST=0        devices:            - /dev/dri:/dev/dri   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.10.07%E4%BD%BF%E7%94%A8PicGo%E4%BD%9C%E4%B8%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B7%A5%E5%85%B7/" title="使用PicGo作为博客图片上传工具">使用PicGo作为博客图片上传工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-07T14:16:33.000Z" title="发表于 2020-10-07 22:16:33">2020-10-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/">博客</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/Picgo/">Picgo</a></span></div><div class="content">Picgo中GitHub的图床： 1、设定仓库名：wangweitung&#x2F;image2、设定分支名：master3、设定token：详见有密钥的文件4、指定存储路径：wordpress&#x2F;5、实现实现后的效果https://github.com/wangweitung/image  jsDelivr 介绍  jsDelivr 是国外的一家优秀的公共 CDN 服务提供商，也是首个打通中国大陆（网宿公司运营）与海外的免费 CDN 服务。jsDelivr 有一个十分好用的功能——它可以加速 Github 仓库的文件。因此可以借Github 搭建一个免费、全球访问速度超快的图床。 解决思路首先在 Github 上创建一个用于存储图片的仓库，然后使用 PicGo 将图片上传到指定仓库并获取对应的 jsDelivr 加速图片访问地址。最后我们就可以愉快地在markdown中写博客了阿！ 12345678设定仓库名：填入你上面创建的仓库名，格式为：用户名/仓库名；wangweitung/image设定分支名：一般填写 master 即可；master设定...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.10.07%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91/" title="家庭网络拓扑">家庭网络拓扑</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-10-07T14:16:33.000Z" title="发表于 2020-10-07 22:16:33">2020-10-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/">OpenWRT</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/%E7%BD%91%E7%BB%9C/">网络</a></span></div><div class="content">2024.04.09更新网络升级为2000M下+100M上。 2020.10.25更新新增了客厅的摄像头。更新网络拓扑如下：	 　　经过一段时间的折腾，家庭的网络拓朴终于搞定了。  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.06.04ubuntu%E5%AE%89%E8%A3%85transmission/" title="ubuntu安装transmission">ubuntu安装transmission</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-06-04T04:03:17.000Z" title="发表于 2020-06-04 12:03:17">2020-06-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/">Docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/Transmission/">Transmission</a></span></div><div class="content">2024.04.08 已经修改为qbitorrent compose文件123456789101112131415161718192021version: &quot;3&quot;services:    qbittorrent:        container_name: qbittorrent        environment:            - PUID=1000            - PGID=1000            - TZ=Asia/Shanghai            - WEBUI_PORT=8080        ports:            - 9091:8080            - 6881:6881            - 6881:6881/udp        volumes:            - ./config:/config            - /home/Disk/Synology/qbittorrent:/downloads        restart:...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.24%E7%89%B9%E6%AE%8A%E5%9F%9F%E5%90%8D/" title="特殊域名">特殊域名</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-24T05:03:17.000Z" title="发表于 2020-05-24 13:03:17">2020-05-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/OpenWRT/">OpenWRT</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.18ubuntu%E6%9B%B4%E6%96%B0lychee3.0%E8%87%B3lychee4.0.5/" title="ubuntu更新lychee3.0至lychee4.0.5">ubuntu更新lychee3.0至lychee4.0.5</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-18T13:03:17.000Z" title="发表于 2020-05-18 21:03:17">2020-05-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Ubuntu/">Ubuntu</a></span></div><div class="content">2024&#x2F;04&#x2F;06更新目前已经更换为immich作为主力相册，群晖photos作为备用。 旧版本lychee： https://github.com/electerious/Lychee 新版本lychee： https://github.com/LycheeOrg/Lychee </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.17ubuntu%E6%89%93%E5%BC%80%E9%98%B2%E7%81%AB%E5%A2%99/" title="ubuntu打开防火墙">ubuntu打开防火墙</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-17T14:42:17.000Z" title="发表于 2020-05-17 22:42:17">2020-05-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Ubuntu/">Ubuntu</a></span></div><div class="content">Ubuntu打开防火墙 防火墙的打开  1sudo ufw enable  防火墙的重启  1sudo ufw reload  打开想要的端口（以9000为例）  12ufw allow 90001 //防火墙的打开sudo ufw enable  .防火墙的重启  1sudo ufw reload  打开想要的端口（以9000为例）  1ufw allow 9000  查看防火墙状态  1ufw status  ubuntu server查看放行端口1.查看端口使用情况。 123netstat -ntlp   //查看当前所有tcp端口·netstat -ntulp |grep 80   //查看所有80端口使用情况·netstat -ntulp | grep 3306   //查看所有3306端口使用情况·    </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021.05.16hexo%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD%E8%87%B3GitHub/" title="hexo源文件备份至GitHub">hexo源文件备份至GitHub</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-16T13:40:17.000Z" title="发表于 2020-05-16 21:40:17">2020-05-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/">博客</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/hexo/">hexo</a></span></div><div class="content">参考连接： https://mupceet.com/2019/09/backup-hexo-blog/ 一、操作查看.gitignore文件中的内容，这些是要排除在备份目录以外的。 12345678.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/themes/landscape/    二、初始化：1234567891011#进入目录cd /home/Disk/2Tsda/app/web/hexo#已初始化空的 Git 仓库于 /home/Disk/2Tsda/app/web/hexo/.git/git init#添加位于 &#x27;themes/Butterfly&#x27; 的现存仓库到索引git submodule add https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly#添加所有文件进入监控范围git add .#添加更新注释git commit -m &quot;init blog...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.14h5ai%E7%9B%AE%E5%BD%95%E5%88%97%E8%A1%A8%E7%A8%8B%E5%BA%8F/" title="h5ai目录列表程序">h5ai目录列表程序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-14T15:58:17.000Z" title="发表于 2020-05-14 23:58:17">2020-05-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/">Docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/h5ai/">h5ai</a></span></div><div class="content">安装compose文件123456789101112131415161718version: &quot;3&quot;services:    h5ai-synology:        container_name: h5ai-synology        ports:            - 5:80        volumes:            - ./media:/h5ai            - ./config:/config        environment:            - PUID=1000            - PGID=1000            - TZ=Asia/Shanghai        restart: unless-stopped        image: awesometic/h5ai        network_mode: bridge        labels:            -...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.14%E5%AE%B6%E5%BA%AD%E6%9E%84%E5%BB%BAnas%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="家庭构建nas的原因">家庭构建nas的原因</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-14T14:58:17.000Z" title="发表于 2020-05-14 22:58:17">2020-05-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A1%AC%E4%BB%B6/NAS/">NAS</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.14%E5%9C%A8ubuntu%20server%E4%B8%8A%E5%AE%89%E8%A3%85kod/" title="在ubuntu server上安装kod">在ubuntu server上安装kod</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-14T03:18:17.000Z" title="发表于 2020-05-14 11:18:17">2020-05-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/">Docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Docker/kodbox/">kodbox</a></span></div><div class="content">ubuntu server安装kod2024.04.08 改为docker安装 compose文件如下：12345678910111213version: &quot;3&quot;services:    kodbox:        ports:            - 2580:80        volumes:            - ./data:/var/www/html            - /home/Disk:/mnt        image: kodcloud/kodbox:latest        container_name: kodbox        labels:            - &quot;com.centurylinklabs.watchtower.enable=true&quot;#        network_mode: bridge</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.12ubuntu%20server%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="ubuntu server基础命令">ubuntu server基础命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-12T12:18:17.000Z" title="发表于 2020-05-12 20:18:17">2020-05-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Ubuntu/">Ubuntu</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Ubuntu/%E5%91%BD%E4%BB%A4/">命令</a></span></div><div class="content">ubuntu server基础命令一、root权限获取如果你想保持当前用户的登录而并且使用root用户执行命令 可以输入：  1234su rootsudo -inet use \\10.1.1.204 /delete  二、重启命令12rebootshutdown -r now  立刻重启(root用户使用) 1shutdown -r 10  过10分钟自动重启(root用户使用) 1shutdown -r 20:35  在时间为20:35时候重启(root用户使用) 如果是通过shutdown命令设置重启的话，可以用shutdown -c命令取消重启 三、关机命令：1halt  立刻关机 1poweroff  立刻关机 1shutdown -h now  立刻关机(root用户使用) 1shutdown -h 10  分钟后自动关机 如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消重启...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.05Pull-or-Push/" title="推动或者拉动的生产模式">推动或者拉动的生产模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-05T07:20:32.000Z" title="发表于 2020-05-05 15:20:32">2020-05-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/%E6%A8%A1%E5%9E%8B/">模型</a></span></div><div class="content">推动或者拉动的生产模式一、建立模型的思路：1、所有模型的逻辑思路在敲代码前，先进行梳理。使用excle和viso。在有问题时，可以及时发现。2、将经过的零件记录到主Bom中。类似于生产过程中的过点扫描。 1test  </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020.05.05Use-CAD-as-Background/" title="导入cad作为背景图"><img class="post-bg" src="https://fastly.jsdelivr.net/gh/LearnPlant/Pic-For-Plant@master/2019.01.01PlantSimulation.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="导入cad作为背景图"></a></div><div class="recent-post-info"><a class="article-title" href="/2020.05.05Use-CAD-as-Background/" title="导入cad作为背景图">导入cad作为背景图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-05T05:20:32.000Z" title="发表于 2020-05-05 13:20:32">2020-05-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/%E8%83%8C%E6%99%AF/">背景</a></span></div><div class="content">导入cad作为背景图一、导入cad文件检查cad文件的默认单位是什么？　　在cad文件中输入命令，并查看单位是否为毫米 1units  如果单位是毫米　　直接将cad文件拖入到模型中即可，比例选择为1.0。 如果单位不是毫米　　输入命令进行转化： 　　输入比例因子的命令： 1sc  　　输入需要调整的比例： 10.5  　　应用即可。 二、导入图片　　打印cad文件为png格式。 1、选择打印为png。2、选择打印窗口，可自行选择。3、打印比例设置为1:50（1像素为50单位）.因为Plant  Simulation里的像素比例因子是0.05（常规-&gt;比例因子）.即一个像素对应0.05m&#x3D;50mm，所以cad中为1:50。 4、新建Frame。5、右键Frame，编辑图标。6、导入，刚才打印的png文件。7、名称改为：background8、应用，即可。</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04How-to-Use-PlantSimulation/" title="PlantSimulation常规操作">PlantSimulation常规操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-04T10:24:29.000Z" title="发表于 2020-05-04 18:24:29">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/">常规操作</a></span></div><div class="content">PlantSimulation常规操作1、检查模型中是否有未连接的实体。　　点击：常规-不相连对象，如果未相连，会有选中提示。  2、旋转实体的快捷键 1Ctrl+T </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04How-to-use-AGV/" title="AGV的用法">AGV的用法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-04T10:18:17.000Z" title="发表于 2020-05-04 18:18:17">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/%E5%AE%9E%E4%BD%93/">实体</a></span></div><div class="content">AGV的用法一、设置AGV的安全距离。打开AGV小车，选择控件，设置距离为任意值，下图为2m，创建控制方法。输入以下代码。  12345678param distanceIsBelowLimit: booleanvar mu1 := @var mu2 := ?if distanceIsBelowLimit 	mu2.speed := 0else	mu2.speed := mu1.speedend  代码解释：设定两个变量mu1和mu2，mu1是当前的AGV小车，mu2是与当前小车相邻的前一个小车。如果distanceIsBelowLimit 是true的话。那么mu2的速度变为0，否则的话，mu2的速度等于mu1的速度。 官方文档对distanceIsBelowLimit 的解释如下： 123The parameter DistanceIsBelowLimit of data type boolean is true when the distance becomes too small. It is false when the distance becomes too...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04How-to-use-Move/" title="Move的用法">Move的用法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-04T09:01:34.000Z" title="发表于 2020-05-04 17:01:34">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/SimTalk/">SimTalk</a></span></div><div class="content">Move的用法1、从传送带移动到传送带上。在传送带上创建传感器，创建一个Method，使用Method来控制传送带上的物料移动。 1@.move（传送带1）  如果需要移动到传送带上某一个位置，如3m位置。 1@.move（传送带1,3）   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04How-to-use-TransferStation/" title="TransferStation的用法">TransferStation的用法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-04T06:58:43.000Z" title="发表于 2020-05-04 14:58:43">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/">Plant Simulation</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Plant-Simulation/%E5%AE%9E%E4%BD%93/">实体</a></span></div><div class="content">TransferStation的用法1、加载 load：将“零件来源”的零件加载到“目标位置的”容器上。 2、卸载unload：将“零件来源”的零件从容器中卸载到“目标位置的”上。 3、重新加载reload：将“零件来源”的零件从容器中加载到“目标位置的”容器上。 4、移动move：将“零件来源”的零件移动到“目标位置”上。  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04WordPress%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="WordPress问题解决">WordPress问题解决</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-03T16:20:32.000Z" title="发表于 2020-05-04 00:20:32">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/">博客</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%8D%9A%E5%AE%A2/WordPress/">WordPress</a></span></div><div class="content">一、无法更新博客系统1、提示如下： 解决办法：使用宝塔面板，设置文件夹权限为755用户为www 2、无法安装主题更新。使用宝塔面板，打开 &#x2F;etc&#x2F;hosts文件，添加以下hosts即可 166.155.40.249    api.wordpress.org 3、将wordpress文件夹权限改为www。来自：https://zhuanlan.zhihu.com/p/25383871/ 把上面的root修改成www就解决了。 二、wordpress无法下载插件1、问题：在wordpress后台搜索插件时发现无法打开。 为此查找解决办法，解决思路如下： 2、怀疑是wordpress的api地址无法访问 查看Ubuntu server的hosts内容，并且ping api.wordpress.org 修改hosts为新的ip地址。 刷新wordpress页面，即可打开插件下载页。  　　至此，问题解决~ 三、维护模式解决WordPress在升级程序、主题、插件时，都会先切换到维护模式，也就是显示 “正在执行例行维护，请一分钟后回来（Briefly...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020.05.04%E6%97%A0%E7%A7%91%E5%AD%A6%E7%8E%AF%E5%A2%83%E8%BF%9E%E6%8E%A5%E8%B0%B7%E6%AD%8C%E8%B4%A6%E6%88%B7/" title="无科学环境连接谷歌账户">无科学环境连接谷歌账户</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-05-03T16:15:23.000Z" title="发表于 2020-05-04 00:15:23">2020-05-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Windows/">Windows</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6/Windows/V2rayNG/">V2rayNG</a></span></div><div class="content">手机-无科学环境连接谷歌账户 开启电脑端的V2rayNG。允许其他设备连接。  开启电脑的热点分享。  查看电脑的IP地址。  手机连接电脑分享的WIFI后，代理选择手动。  主机名输入电脑的无线ip地址，端口填ss分享的端口。即可。   </div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/4/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/6/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.wmch.tk:5/2025/05/25/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">wangweitung</div><div class="author-info-description">如何才能不荒废后面这半生！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">87</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">104</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Stay hungry,Stay foolish.Stay hard,Stay young.Stay alive！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/PVE%E9%83%A8%E7%BD%B2HaOS/" title="PVE部署HaOS">PVE部署HaOS</a><time datetime="2025-06-03T08:07:00.000Z" title="发表于 2025-06-03 16:07:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ETC%E5%A4%B1%E6%95%88%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB/" title="ETC失效重新激活">ETC失效重新激活</a><time datetime="2025-06-03T05:20:00.000Z" title="发表于 2025-06-03 13:20:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BC%96%E8%AF%91OpenWRT/" title="编译OpenWRT">编译OpenWRT</a><time datetime="2025-06-03T04:57:00.000Z" title="发表于 2025-06-03 12:57:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%BE%88%E5%A4%9A%E8%BF%9B%E5%8F%A3%E8%8D%AF%EF%BC%8C%E6%82%84%E6%97%A0%E5%A3%B0%E6%81%AF%E5%9C%B0%E6%B6%88%E5%A4%B1%E4%BA%86/" title="很多进口药，悄无声息地消失了">很多进口药，悄无声息地消失了</a><time datetime="2025-06-03T04:34:00.000Z" title="发表于 2025-06-03 12:34:00">2025-06-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85wireguard/" title="群晖安装wireguard">群晖安装wireguard</a><time datetime="2025-06-03T03:53:00.000Z" title="发表于 2025-06-03 11:53:00">2025-06-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/"><span class="card-category-list-name">Plant Simulation</span><span class="card-category-list-count">8</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/SimTalk/"><span class="card-category-list-name">SimTalk</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E4%BB%A3%E7%A0%81/"><span class="card-category-list-name">代码</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%AE%9E%E4%BD%93/"><span class="card-category-list-name">实体</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/"><span class="card-category-list-name">常用代码</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/"><span class="card-category-list-name">常规操作</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E6%A8%A1%E5%9E%8B/"><span class="card-category-list-name">模型</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Plant-Simulation/%E8%83%8C%E6%99%AF/"><span class="card-category-list-name">背景</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/WireGuard/" style="font-size: 1.23em; color: #999ea6">WireGuard</a> <a href="/tags/%E6%BF%80%E6%B4%BB/" style="font-size: 1.1em; color: #999">激活</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 1.23em; color: #999ea6">备份</a> <a href="/tags/%E6%91%84%E5%83%8F%E5%A4%B4/" style="font-size: 1.1em; color: #999">摄像头</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">问题</a> <a href="/tags/ResilioSync/" style="font-size: 1.1em; color: #999">ResilioSync</a> <a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6/" style="font-size: 1.1em; color: #999">电子书</a> <a href="/tags/transferstation/" style="font-size: 1.1em; color: #999">transferstation</a> <a href="/tags/Screen/" style="font-size: 1.1em; color: #999">Screen</a> <a href="/tags/Markdown/" style="font-size: 1.1em; color: #999">Markdown</a> <a href="/tags/OpenWRT/" style="font-size: 1.5em; color: #99a9bf">OpenWRT</a> <a href="/tags/%E5%A4%B1%E8%81%94/" style="font-size: 1.23em; color: #999ea6">失联</a> <a href="/tags/%E9%94%81%E5%AE%9A/" style="font-size: 1.1em; color: #999">锁定</a> <a href="/tags/WordPress/" style="font-size: 1.1em; color: #999">WordPress</a> <a href="/tags/Picgo/" style="font-size: 1.1em; color: #999">Picgo</a> <a href="/tags/3205U/" style="font-size: 1.1em; color: #999">3205U</a> <a href="/tags/PTPP/" style="font-size: 1.1em; color: #999">PTPP</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" style="font-size: 1.1em; color: #999">自动更新</a> <a href="/tags/%E5%85%BB%E8%80%81/" style="font-size: 1.1em; color: #999">#养老</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.1em; color: #999">生活</a> <a href="/tags/%E7%BE%A4%E6%99%96/" style="font-size: 1.1em; color: #999">群晖</a> <a href="/tags/h5ai/" style="font-size: 1.1em; color: #999">h5ai</a> <a href="/tags/%E7%A9%BA%E6%A0%BC/" style="font-size: 1.1em; color: #999">空格</a> <a href="/tags/%E8%BF%9B%E5%8F%A3%E8%8D%AF/" style="font-size: 1.1em; color: #999">进口药</a> <a href="/tags/stackedit/" style="font-size: 1.1em; color: #999">stackedit</a> <a href="/tags/home-asisstant/" style="font-size: 1.23em; color: #999ea6">home-asisstant</a> <a href="/tags/%E8%AE%BE%E7%BD%AE/" style="font-size: 1.1em; color: #999">设置</a> <a href="/tags/%E7%9B%B8%E5%86%8C/" style="font-size: 1.1em; color: #999">相册</a> <a href="/tags/V2rayNG/" style="font-size: 1.1em; color: #999">V2rayNG</a> <a href="/tags/ubuntu/" style="font-size: 1.37em; color: #99a4b2">ubuntu</a> <a href="/tags/Zerotier/" style="font-size: 1.1em; color: #999">Zerotier</a> <a href="/tags/ERP/" style="font-size: 1.1em; color: #999">ERP</a> <a href="/tags/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/" style="font-size: 1.1em; color: #999">百度网盘</a> <a href="/tags/%E8%AF%84%E8%AE%BA/" style="font-size: 1.1em; color: #999">评论</a> <a href="/tags/tailscale/" style="font-size: 1.1em; color: #999">tailscale</a> <a href="/tags/%E6%81%A2%E5%A4%8D/" style="font-size: 1.1em; color: #999">恢复</a> <a href="/tags/%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86/" style="font-size: 1.1em; color: #999">视频采集</a> <a href="/tags/%E6%AD%BB%E4%BA%A1/" style="font-size: 1.1em; color: #999">死亡</a> <a href="/tags/Beancount/" style="font-size: 1.1em; color: #999">Beancount</a> <a href="/tags/immich/" style="font-size: 1.1em; color: #999">immich</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/04/">
+            <span class="card-archive-list-date">
+              四月 2024
+            </span>
+            <span class="card-archive-list-count">26</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/11/">
+            <span class="card-archive-list-date">
+              十一月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">103</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-06-03T08:20:47.581Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By wangweitung</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="/js/tw_cn.js?v=5.3.5"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  btf.getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js')
+    .then(() => {
+      jinrishici.load(result => {
+        if (result && result.data && result.data.content) {
+          typedJSFn.processSubtitle(result.data.content)
+        } else {
+          throw new Error('Failed to parse the return value of Jinrishici API')
+        }
+      })
+    })
+    .catch(err => {
+      console.error('Failed to get the Jinrishici API:', err)
+      typedJSFn.processSubtitle(0)
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
